@@ -1,0 +1,74 @@
+name: MUINEIRA GOLPE 132
+meter: 6/8
+# Galicia. Tempo sugerido: 132 BPM (negras; compas 6/8).
+# Golpe: variante lenta da muineira (6/8), cada parella cos seus puntos.
+# Voces: kick=bombo · snare=tamboril/caixa · clap=pel da pandeireta, cunchas ou palmas
+# hhc=ferrenas (pandeireta) · hho=xiro/arrastre de ferrenas · lotom/hitom=baixo (ronco, bordon).
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.x.x. X.x.x.
+
+[p1]
+kick   X..... ......
+snare  X...X. X.....
+hhc    X.x.x. X.x.x.
+hho    ...... ....x.
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+snare  X..oXo X..o-.
+hhc    X-X-X- X-X-X-
+hho    ...... ....X.
+hitom  ...... -.....
+lotom  X..... ......
+
+[p3]
+kick   X....x X..X..
+snare  X..oXo X.ooxo
+hhc    X-X-X- X-X-X-
+hho    ...... ....x.
+hitom  ....x. ....X.
+lotom  X..... X.....
+
+[p4]                         # BASE
+kick   X..... X.....
+snare  X..oX. X..o-.
+hhc    X.x.x. X.x.x.
+hitom  ...... -.....
+lotom  X..... ......
+
+[p5]
+kick   X..... X.....
+snare  X..oX. X.ooxo
+hhc    X.x.x. X.x.x.
+hho    ...... ....x.
+hitom  ....x. ......
+lotom  X..... X.....
+
+[p6]                         # VARIACION
+kick   X..... X.....
+snare  X..oX. X..o-.
+hhc    X.x... X.x...
+hho    ....x. ....x.
+hitom  ...... -.....
+lotom  X..... ......
+
+[p7]
+kick   X..... X.....
+snare  X..oX. X.ooxo
+hhc    X.x... X.x.x.
+hho    ....x. ....x.
+hitom  ....x. ..Xx..
+lotom  X..... X...Xo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.x.x. X.x.x.
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

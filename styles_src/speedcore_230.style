@@ -1,0 +1,64 @@
+name: SPEEDCORE 230
+# Trance & hard dance. Tempo sugerido: 230 BPM.
+# Speedcore: bombo en corcheas a tempo extremo.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    XXXX XXXX XXXX XXXX
+
+[p1]
+kick   X... .... .... ....
+snare  .... X... .... X...
+hhc    XXXX XXXX XXXX XXXX
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X.X. X.Xx X.X. X.X.
+snare  ...o X... ...o X...
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+lotom  X... X... X... X...
+
+[p3]
+kick   X.X. X.Xx X.X. XXX.
+snare  ...o X... ...o X...
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+hitom  .... .... .... ..X.
+lotom  X... X... X... X...
+
+[p4]                         # BASE
+kick   X.X. X.X. X.X. X.X.
+snare  .... X... .... X...
+hhc    XXXX XXXX XXXX XXXX
+lotom  X... X... X... X...
+
+[p5]
+kick   X.X. X.X. X.X. X.X.
+snare  .... X... .... X...
+hhc    XXXX XXXX XXXX XXXX
+lotom  X... X... X... X...
+
+[p6]                         # VARIACION
+kick   X.X. X.X. X.X. X.X.
+snare  .... X... .... X...
+hhc    XX.X XX.X XX.X XX.X
+hho    ..X. ..X. ..X. ..X.
+lotom  X... X... X... X...
+
+[p7]
+kick   X.X. X.X. X.X. X.X.
+snare  .... X... .... X...
+hhc    XX.X XX.X XX.X XX.X
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .... .x..
+lotom  X... X... X... X.Xo
+
+[p8]                         # FILL
+kick   X..X .... X... ....
+snare  ........ ........ xoxoxoxo xoXXXXXX
+hhc    ..Xo XoXo .... ....
+hho    X... .... .... ....
+hitom  .... ..XX .... ....
+lotom  .... .... .... ...X
