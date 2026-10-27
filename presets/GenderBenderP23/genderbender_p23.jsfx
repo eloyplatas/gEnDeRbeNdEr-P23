@@ -1,0 +1,1251 @@
+desc: MIDI GenderBender P23 (SOMA Pulsar-23)
+//tags: MIDI generator drums
+// GenderBender de 4 canales para la SOMA Pulsar-23: BD, BASS, SD y HHT.
+// Lee los mismos estilos de 7 voces que GenderBender (Data/drum_styles_v) y asigna a cada
+// canal de la Pulsar una o dos voces del estilo (FUENTE). Cuando la fuente tiene dos voces,
+// la segunda ("ALT": hat abierto, clap, tom alto) usa su propio gate y su propio intervalo.
+// La Pulsar sostiene la envolvente mientras dura la nota: el gate en ms es el sustain.
+// GPL v3, como GenderBender (version original de Sergio Millan).
+
+// ---- estilos (uno por canal) ----
+// el estilo de cada canal es un numero (posicion en la lista de estilos); el slider de archivo
+// slider5 solo se usa para listar la carpeta. Asi la GUI no tiene que cambiar sliders de archivo.
+slider1:0<0,599,1>-BD style #
+slider2:0<0,599,1>-BASS style #
+slider3:0<0,599,1>-SD style #
+slider4:0<0,599,1>-HHT style #
+slider5:/drum_styles_v:none:-style folder
+
+// ---- globales ----
+slider6:0<-100,100,1>-Pad X
+slider7:0<-100,100,1>-Pad Y
+slider8:50<50,75,1>-Swing
+slider9:4<0,32,1>-Break interval (beats)
+slider10:1<1,32,1>-Break length (beats)
+slider11:0<0,100,1>-Break random %
+slider12:4<0,32,1>-Break offset
+
+// ---- canal 0: BD (13..25) ----
+slider13:0<0,9,1{KICK,SNARE,CLAP,HH CL,HH OP,HI TOM,LO TOM,SN+CLAP,HH CL+OP,TOMS}>-BD source
+slider14:25<0,100,0.1>-BD density %
+slider15:4<0,10,1>-BD div
+slider16:0<0,10,1>-BD break div
+slider17:127<1,127,1>-BD velocity
+slider18:50<0,100,1>-BD dynamics %
+slider19:30<1,2000,1>-BD gate ms
+slider20:30<1,2000,1>-BD alt gate ms
+slider24:100<0,100,1>-BD swing amount
+slider25:0<-30,30,1>-BD slide ms
+
+// ---- canal 1: BASS (26..38) ----
+slider26:9<0,9,1{KICK,SNARE,CLAP,HH CL,HH OP,HI TOM,LO TOM,SN+CLAP,HH CL+OP,TOMS}>-BASS source
+slider27:25<0,100,0.1>-BASS density %
+slider28:4<0,10,1>-BASS div
+slider29:0<0,10,1>-BASS break div
+slider30:127<1,127,1>-BASS velocity
+slider31:50<0,100,1>-BASS dynamics %
+slider32:150<1,2000,1>-BASS gate ms
+slider33:150<1,2000,1>-BASS alt gate ms
+slider34:12<-24,24,1>-BASS alt semitones
+slider37:100<0,100,1>-BASS swing amount
+slider38:0<-30,30,1>-BASS slide ms
+
+// ---- canal 2: SD (39..51) ----
+slider39:7<0,9,1{KICK,SNARE,CLAP,HH CL,HH OP,HI TOM,LO TOM,SN+CLAP,HH CL+OP,TOMS}>-SD source
+slider40:25<0,100,0.1>-SD density %
+slider41:4<0,10,1>-SD div
+slider42:0<0,10,1>-SD break div
+slider43:127<1,127,1>-SD velocity
+slider44:50<0,100,1>-SD dynamics %
+slider45:30<1,2000,1>-SD gate ms
+slider46:30<1,2000,1>-SD alt gate ms
+slider50:100<0,100,1>-SD swing amount
+slider51:0<-30,30,1>-SD slide ms
+
+// ---- canal 3: HHT (52..64) ----
+slider52:8<0,9,1{KICK,SNARE,CLAP,HH CL,HH OP,HI TOM,LO TOM,SN+CLAP,HH CL+OP,TOMS}>-HHT source
+slider53:25<0,100,0.1>-HHT density %
+slider54:4<0,10,1>-HHT div
+slider55:0<0,10,1>-HHT break div
+slider56:127<1,127,1>-HHT velocity
+slider57:50<0,100,1>-HHT dynamics %
+slider58:15<1,2000,1>-HHT gate ms
+slider59:250<1,2000,1>-HHT alt gate ms
+slider63:100<0,100,1>-HHT swing amount
+slider64:0<-30,30,1>-HHT slide ms
+
+in_pin:none
+out_pin:none
+
+@init
+ext_noinit = 1;
+
+NCH = 4;              // canales de la Pulsar
+NV = 7;               // voces de un estilo
+NP = 9;               // patrones por voz
+NS = 32;              // pasos por patron
+CHSTRIDE = NV*NP*NS;  // 2016 valores por canal
+PAT = 0;              // patrones: 0 .. 4*2016-1 (8064)
+
+// parametros de canal: slider(chBase(c) + offset)
+P_SRC=0; P_DENS=1; P_DIV=2; P_BRK=3; P_VEL=4; P_DYN=5; P_GATE=6; P_AGATE=7;
+P_ASEMI=8; P_SWAMT=11; P_SLIDE=12;   // 9 y 10 (nota y canal) ya no existen: salida fija
+function chBase(c) ( 13 + 13*c; );
+
+// salida fija: BD, SD y HHT por el canal 10 (notas 36, 38, 42); BASS por el canal 2 (nota 36)
+function chNote(c) ( c == 2 ? 38 : c == 3 ? 42 : 36; );
+function chStat(c) ( c == 1 ? $x91 : $x99; );     // NoteOn: canal 2 / canal 10
+function chAltSemi(c) ( c == 1 ? slider34 : 0; ); // solo el BASS transpone la voz ALT
+
+// rejillas: pasos por negra (indice = valor del slider DIV / BREAK)
+divs = 9000;
+divs[0]=1; divs[1]=1; divs[2]=2; divs[3]=4; divs[4]=8; divs[5]=12;
+divs[6]=16; divs[7]=24; divs[8]=32; divs[9]=16; divs[10]=12;
+
+// fuentes: voz principal y voz ALT (-1 = ninguna). Voces: 0 kick 1 snare 2 clap 3 hhc 4 hho 5 hitom 6 lotom
+srcP = 9100; srcA = 9120;
+srcP[0]=0; srcA[0]=-1;   // KICK
+srcP[1]=1; srcA[1]=-1;   // SNARE
+srcP[2]=2; srcA[2]=-1;   // CLAP
+srcP[3]=3; srcA[3]=-1;   // HH CL
+srcP[4]=4; srcA[4]=-1;   // HH OP
+srcP[5]=5; srcA[5]=-1;   // HI TOM
+srcP[6]=6; srcA[6]=-1;   // LO TOM
+srcP[7]=1; srcA[7]=2;    // SN+CLAP  (clap = ALT)
+srcP[8]=3; srcA[8]=4;    // HH CL+OP (hat abierto = ALT, gate largo)
+srcP[9]=6; srcA[9]=5;    // TOMS     (tom bajo = nota, tom alto = nota + ALT semitonos)
+
+// pad XY: patron en cada esquina (|X|,|Y|) = (0,0) (1,0) (0,1) (1,1) de cada cuadrante.
+// Reproduce exactamente las formulas de GenderBender (kdrumFunc y companeras).
+cornerP = 9200;
+cornerP[4]=6;  cornerP[5]=4;  cornerP[6]=2;  cornerP[7]=0;   // sector 1: X<0, Y<=0
+cornerP[8]=8;  cornerP[9]=6;  cornerP[10]=4; cornerP[11]=0;  // sector 2: X<0, Y>0
+cornerP[12]=0; cornerP[13]=2; cornerP[14]=8; cornerP[15]=6;  // sector 3: X>=0, Y>0
+cornerP[16]=4; cornerP[17]=2; cornerP[18]=0; cornerP[19]=8;  // sector 4: X>=0, Y<=0 (centro = p4)
+
+// cola de eventos MIDI
+QSIZE = 128;
+evType = 20000;      // 0 libre, 1 NoteOn pendiente, 2 NoteOff pendiente
+evTime = 20200;      // negras
+evStat = 20400;      // byte de estado del NoteOn ($x90 | canal)
+evNote = 20600;
+evVel  = 20800;
+evDur  = 21000;      // negras
+evStraight = 21200;  // tiempo recto del paso
+evVoice = 21400;     // canal de la Pulsar (0..3)
+anticipT = 21600;    // por canal: tiempo recto del ultimo NoteOn emitido
+skipAt   = 21610;    // por canal: paso a omitir tras un salto
+hitTime  = 21620;    // por canal: time_precise() del ultimo golpe (GUI)
+hitVel   = 21630;
+testReq  = 21640;    // por canal: la GUI pide una nota de prueba
+testLeft = 21650;    // por canal: samples que faltan para el NoteOff de prueba
+testStat = 21660;
+testNote = 21670;
+memset(evType, 0, QSIZE);
+memset(anticipT, -1000000, NCH);
+memset(skipAt, -1, NCH);
+memset(testReq, 0, NCH);
+memset(testLeft, 0, NCH);
+SLIDE_MAX_MS = 30;
+evalHorizon = 0;
+expectedB0 = 0;
+wasPlaying = 0;
+curBeat = 0;
+isPlaying = 0;
+
+// ---------- ESTILOS ----------
+// Lista de estilos: posiciones 0..numStyles-1, con el nombre de archivo ("drum_styles_v/X.txt",
+// relativo a Data/) en el string STYLE_NAMES+i. Cada canal guarda su posicion en slider1..slider4,
+// que son sliders numericos normales (como los knobs). Los archivos se abren por su nombre.
+STYLE_NAMES = 300;
+MAX_STYLES = 600;
+numStyles = 0;
+styleSrc = 0;        // de donde salio la lista: 1 = slider de carpeta, 2 = Data/drum_styles_v_list.txt
+loadedSt = 9400;     // por canal: posicion cargada en memoria (-1 = ninguna)
+loadFail = 9410;     // por canal: 1 si el ultimo intento de carga fallo
+triedA   = 9420;     // por canal: ultima posicion que intento cargar el hilo de audio
+memset(loadedSt, -1, NCH); memset(loadFail, 0, NCH); memset(triedA, -1, NCH);
+TMP_A = 30000; TMP_G = 33000;   // buffers de lectura (2016 valores cada uno)
+BOR = 36000;         // por canal/voz/paso: nivel maximo de esa voz en los 9 patrones (golpes "prestados")
+meterLen = 9430;     // por canal: pasos del bucle (32 = 4/4, 24 = 3/4 o 6/8, 20 = 5/8, 28 = 7/8)
+meterK   = 9440;     // por canal: tipo de compas (4, 3, 6, 5, 7) para el peso metrico
+memset(BOR, 0, NCH*NV*NS); memset(meterLen, 32, NCH); memset(meterK, 4, NCH);
+
+function styleVal(c) ( floor(c == 0 ? slider1 : c == 1 ? slider2 : c == 2 ? slider3 : slider4); );
+
+// lee el estilo de la lista que indica el slider del canal c (copia A).
+// Formato de drum_styles_v: voces separadas por '/', patrones por tab, "nombreN|v0,...,v31".
+// Se lee en un buffer aparte y solo se copia al canal si el archivo tiene datos.
+function loadStyleA(c) local(h, p, i, len, ch, voice, pn, idx, num, hasNum, inNums, cnt, tmp)(
+  p = styleVal(c);
+  tmp = TMP_A;
+  cnt = 0;
+  p >= 0 && p < numStyles ? (
+    strcpy(#lsBufA, "");
+    (h = file_open(STYLE_NAMES + p)) >= 0 ? (
+      loop(64,
+        strcpy(#lsLineA, "");
+        file_string(h, #lsLineA);
+        strcat(#lsBufA, #lsLineA);
+      );
+      file_close(h);
+    );
+    memset(tmp, 0, CHSTRIDE);
+    len = strlen(#lsBufA);
+    voice = 0; pn = -1; idx = 0; num = 0; hasNum = 0; inNums = 0;
+    i = 0;
+    while (i <= len) (
+      ch = i < len ? str_getchar(#lsBufA, i) : 47;
+      ch >= 48 && ch <= 57 ? (
+        inNums ? ( num = num*10 + (ch-48); hasNum = 1; );
+      ) : (
+        inNums && hasNum ? (
+          voice < NV && pn >= 0 && pn < NP && idx < NS ? (
+            tmp[voice*NP*NS + pn*NS + idx] = min(num, 255);
+            cnt += 1;
+          );
+          idx += 1;
+        );
+        num = 0; hasNum = 0;
+        ch == 124 ? ( pn += 1; idx = 0; inNums = 1; );                  // '|'
+        ch == 47  ? ( i < len ? voice += 1; pn = -1; inNums = 0; );     // '/'
+        ch == 9 || ch == 10 || ch == 13 ? inNums = 0;                     // tab / fin de linea
+      );
+      i += 1;
+    );
+  );
+  cnt >= 32 ? (
+    memcpy(PAT + c*CHSTRIDE, tmp, CHSTRIDE);
+    // golpes prestados: para cada voz y paso, el nivel mas alto en cualquiera de los 9 patrones
+    voice = 0;
+    loop(NV,
+      idx = 0;
+      loop(NS,
+        num = 0; pn = 0;
+        loop(NP, num = max(num, tmp[voice*NP*NS + pn*NS + idx]); pn += 1;);
+        BOR[c*NV*NS + voice*NS + idx] = num;
+        idx += 1;
+      );
+      voice += 1;
+    );
+    // compas: etiqueta en el nombre del archivo (lo anade tools/make_style.py con "meter:")
+    match("*(6-8)*", STYLE_NAMES + p) ? ( meterLen[c] = 24; meterK[c] = 6; ) :
+    match("*(3-4)*", STYLE_NAMES + p) ? ( meterLen[c] = 24; meterK[c] = 3; ) :
+    match("*(5-8)*", STYLE_NAMES + p) ? ( meterLen[c] = 20; meterK[c] = 5; ) :
+    match("*(7-8)*", STYLE_NAMES + p) ? ( meterLen[c] = 28; meterK[c] = 7; ) :
+                                        ( meterLen[c] = 32; meterK[c] = 4; );
+    loadedSt[c] = p;
+    loadFail[c] = 0;
+  ) : loadFail[c] = 1;
+  cnt >= 32;
+);
+
+// lee el estilo de la lista que indica el slider del canal c (copia G).
+// Formato de drum_styles_v: voces separadas por '/', patrones por tab, "nombreN|v0,...,v31".
+// Se lee en un buffer aparte y solo se copia al canal si el archivo tiene datos.
+function loadStyleG(c) local(h, p, i, len, ch, voice, pn, idx, num, hasNum, inNums, cnt, tmp)(
+  p = styleVal(c);
+  tmp = TMP_G;
+  cnt = 0;
+  p >= 0 && p < numStyles ? (
+    strcpy(#lsBufG, "");
+    (h = file_open(STYLE_NAMES + p)) >= 0 ? (
+      loop(64,
+        strcpy(#lsLineG, "");
+        file_string(h, #lsLineG);
+        strcat(#lsBufG, #lsLineG);
+      );
+      file_close(h);
+    );
+    memset(tmp, 0, CHSTRIDE);
+    len = strlen(#lsBufG);
+    voice = 0; pn = -1; idx = 0; num = 0; hasNum = 0; inNums = 0;
+    i = 0;
+    while (i <= len) (
+      ch = i < len ? str_getchar(#lsBufG, i) : 47;
+      ch >= 48 && ch <= 57 ? (
+        inNums ? ( num = num*10 + (ch-48); hasNum = 1; );
+      ) : (
+        inNums && hasNum ? (
+          voice < NV && pn >= 0 && pn < NP && idx < NS ? (
+            tmp[voice*NP*NS + pn*NS + idx] = min(num, 255);
+            cnt += 1;
+          );
+          idx += 1;
+        );
+        num = 0; hasNum = 0;
+        ch == 124 ? ( pn += 1; idx = 0; inNums = 1; );                  // '|'
+        ch == 47  ? ( i < len ? voice += 1; pn = -1; inNums = 0; );     // '/'
+        ch == 9 || ch == 10 || ch == 13 ? inNums = 0;                     // tab / fin de linea
+      );
+      i += 1;
+    );
+  );
+  cnt >= 32 ? (
+    memcpy(PAT + c*CHSTRIDE, tmp, CHSTRIDE);
+    // golpes prestados: para cada voz y paso, el nivel mas alto en cualquiera de los 9 patrones
+    voice = 0;
+    loop(NV,
+      idx = 0;
+      loop(NS,
+        num = 0; pn = 0;
+        loop(NP, num = max(num, tmp[voice*NP*NS + pn*NS + idx]); pn += 1;);
+        BOR[c*NV*NS + voice*NS + idx] = num;
+        idx += 1;
+      );
+      voice += 1;
+    );
+    // compas: etiqueta en el nombre del archivo (lo anade tools/make_style.py con "meter:")
+    match("*(6-8)*", STYLE_NAMES + p) ? ( meterLen[c] = 24; meterK[c] = 6; ) :
+    match("*(3-4)*", STYLE_NAMES + p) ? ( meterLen[c] = 24; meterK[c] = 3; ) :
+    match("*(5-8)*", STYLE_NAMES + p) ? ( meterLen[c] = 20; meterK[c] = 5; ) :
+    match("*(7-8)*", STYLE_NAMES + p) ? ( meterLen[c] = 28; meterK[c] = 7; ) :
+                                        ( meterLen[c] = 32; meterK[c] = 4; );
+    loadedSt[c] = p;
+    loadFail[c] = 0;
+  ) : loadFail[c] = 1;
+  cnt >= 32;
+);
+
+// nombre base de un archivo (sin carpeta ni ".txt") en dst
+function baseName(src, dst) local(n, k, ch)(
+  strcpy(dst, src);
+  n = strlen(dst); k = n - 1;
+  while (k >= 0 && (ch = str_getchar(dst, k)) != 47 && ch != 92) ( k -= 1; );
+  k >= 0 ? ( strcpy_substr(dst, dst, k + 1); n = strlen(dst); );
+  n > 4 && stricmp(strcpy_substr(#bnx, dst, n-4, 4), ".txt") == 0 ? strcpy_substr(dst, dst, 0, n-4);
+  dst;
+);
+
+// 1) lista desde el slider de carpeta: se recorre slider5 y se lee cada nombre.
+//    Fin: nombre vacio, solo carpeta, repetido o vuelta al primero. Solo .txt (sin ocultos).
+function scanSlider() local(i, n, ok, keep, len, ch, k)(
+  keep = slider5;
+  i = 0; n = 0; ok = 1;
+  strcpy(#prevName, ""); strcpy(#firstName, "");
+  while (ok && i < MAX_STYLES) (
+    slider5 = i;
+    strcpy(#probe, "");
+    strcpy_fromslider(#probe, slider5);
+    len = strlen(#probe);
+    ch = len > 0 ? str_getchar(#probe, len-1) : 47;
+    len == 0 || ch == 47 || ch == 92 || strcmp(#probe, #prevName) == 0
+      || (i > 0 && strcmp(#probe, #firstName) == 0) ? ok = 0 : (
+      i == 0 ? strcpy(#firstName, #probe);
+      strcpy(#prevName, #probe);
+      k = len - 1;
+      while (k >= 0 && (ch = str_getchar(#probe, k)) != 47 && ch != 92) ( k -= 1; );
+      len > 4 && str_getchar(#probe, k+1) != 46
+        && stricmp(strcpy_substr(#probeExt, #probe, len-4, 4), ".txt") == 0 ? (
+        // sin carpeta delante, se le pone (file_open busca relativo a Data/)
+        k < 0 ? ( strcpy(STYLE_NAMES + n, "drum_styles_v/"); strcat(STYLE_NAMES + n, #probe); )
+              : strcpy(STYLE_NAMES + n, #probe);
+        n += 1;
+      );
+      i += 1;
+    );
+  );
+  slider5 = keep;
+  n;
+);
+
+// 2) respaldo: lista en Data/drum_styles_v_list.txt (un archivo por linea; la crea tools/install.sh)
+function scanListFile() local(h, n, len, ch, guard)(
+  n = 0;
+  (h = file_open("drum_styles_v_list.txt")) >= 0 ? (
+    guard = 0;
+    while (file_avail(h) > 0 && n < MAX_STYLES && guard < 5000) (
+      strcpy(#lf, "");
+      file_string(h, #lf);
+      // quitar fin de linea y espacios finales
+      len = strlen(#lf);
+      while (len > 0 && ((ch = str_getchar(#lf, len-1)) == 10 || ch == 13 || ch == 32 || ch == 9)) ( len -= 1; );
+      strcpy_substr(#lf, #lf, 0, len);
+      len > 4 && str_getchar(#lf, 0) != 46 && stricmp(strcpy_substr(#lfx, #lf, len-4, 4), ".txt") == 0 ? (
+        strcpy(STYLE_NAMES + n, "drum_styles_v/");
+        strcat(STYLE_NAMES + n, #lf);
+        n += 1;
+      );
+      guard += 1;
+    );
+    file_close(h);
+  );
+  n;
+);
+
+function scanStyles() local(n)(
+  n = scanSlider();
+  n > 0 ? styleSrc = 1 : ( n = scanListFile(); styleSrc = n > 0 ? 2 : 0; );
+  lastScanT = time_precise();
+  n;
+);
+
+// posicion del estilo con ese nombre (se compara el nombre base, sin mayusculas): -1 si no esta
+function findStyle(name) local(i, r)(
+  baseName(name, #fsWant);
+  r = -1; i = 0;
+  while (r < 0 && i < numStyles) (
+    stricmp(baseName(STYLE_NAMES + i, #fsHave), #fsWant) == 0 ? r = i;
+    i += 1;
+  );
+  r;
+);
+
+numStyles = scanStyles();
+
+// canal fuera de la lista -> primer estilo
+function fixStyleVals()(
+  numStyles > 0 ? (
+    styleVal(0) >= numStyles ? slider1 = 0;
+    styleVal(1) >= numStyles ? slider2 = 0;
+    styleVal(2) >= numStyles ? slider3 = 0;
+    styleVal(3) >= numStyles ? slider4 = 0;
+  );
+);
+fixStyleVals();
+
+// hilo de audio: carga lo que la GUI haya pedido y no se haya podido cargar (un intento por cambio)
+function syncStylesA() local(c, p)(
+  c = 0;
+  loop(NCH,
+    p = styleVal(c);
+    p != loadedSt[c] && p != triedA[c] ? ( triedA[c] = p; loadStyleA(c); );
+    c += 1;
+  );
+);
+syncStylesA();
+
+// ---------- PAD XY ----------
+function updatePad()(
+  slider6 >= 0 ? ( sector = slider7 > 0 ? 3 : 4; ) : ( sector = slider7 > 0 ? 2 : 1; );
+  Xmap = abs(slider6/100);
+  Ymap = abs(slider7/100);
+);
+updatePad();
+
+// valor morfeado (0..255) de la voz v del canal c en la posicion pos; sb = compas par/impar
+function morphVal(c, v, pos, sb) local(base, s, i0, i1, i2, i3)(
+  base = PAT + c*CHSTRIDE + v*NP*NS + pos;
+  s = sector*4;
+  i0 = cornerP[s];   i0 < 8 ? i0 += sb;
+  i1 = cornerP[s+1]; i1 < 8 ? i1 += sb;
+  i2 = cornerP[s+2]; i2 < 8 ? i2 += sb;
+  i3 = cornerP[s+3]; i3 < 8 ? i3 += sb;
+  base[i0*NS]*(1-Xmap)*(1-Ymap) + base[i1*NS]*Xmap*(1-Ymap)
+    + base[i2*NS]*(1-Xmap)*Ymap + base[i3*NS]*Xmap*Ymap;
+);
+
+function morphValG(c, v, pos, sb) local(base, s, i0, i1, i2, i3)(
+  base = PAT + c*CHSTRIDE + v*NP*NS + pos;
+  s = sector*4;
+  i0 = cornerP[s];   i0 < 8 ? i0 += sb;
+  i1 = cornerP[s+1]; i1 < 8 ? i1 += sb;
+  i2 = cornerP[s+2]; i2 < 8 ? i2 += sb;
+  i3 = cornerP[s+3]; i3 < 8 ? i3 += sb;
+  base[i0*NS]*(1-Xmap)*(1-Ymap) + base[i1*NS]*Xmap*(1-Ymap)
+    + base[i2*NS]*(1-Xmap)*Ymap + base[i3*NS]*Xmap*Ymap;
+);
+
+// ---------- DENSIDAD ----------
+// Cada paso tiene una prioridad 0..1 en 7 bandas: X (255), x (170), o (120), - (60), golpe
+// "prestado" (la voz tiene golpe en ese paso en algun otro de sus 9 patrones), y paso vacio.
+// Dentro de cada banda manda el peso metrico del compas del canal (pulsos, corcheas,
+// semicorcheas, fusas) y, en empate, un orden pseudoaleatorio estable. Las X del patron siguen
+// siempre el mismo orden; el resto cambia de orden en cada par de compases de un ciclo de 8
+// compases, asi que lo que anade DENS evoluciona en vez de repetir el mismo bucle.
+// DENS cuenta golpes por orden de prioridad, sin zonas muertas:
+//   0..25 %  -> de 0 golpes a todas las X del patron (25 % = el patron tal como esta escrito)
+//   25..100% -> se anaden x, o, -, despues golpes prestados y al final rellenos en pasos vacios.
+// La voz ALT llega hasta sus golpes prestados, sin rellenos.
+// (copias A para audio y G para la GUI: en EEL los parametros y locales son compartidos entre hilos)
+X_BAND = 6/7 - 0.000001;
+
+// peso metrico de un paso segun el compas del canal (A)
+function metricA(pos, k)(
+  k == 6 ? ( pos % 12 == 0 ? 1 : pos % 4 == 0 ? 0.66 : pos % 2 == 0 ? 0.33 : 0 ) :
+  k == 5 ? ( pos == 0 || pos == 12 ? 1 : pos % 4 == 0 ? 0.66 : pos % 2 == 0 ? 0.33 : 0 ) :
+  k == 7 ? ( pos == 0 || pos == 8 || pos == 16 ? 1 : pos % 4 == 0 ? 0.66 : pos % 2 == 0 ? 0.33 : 0 ) :
+           ( pos % 8 == 0 ? 1 : pos % 4 == 0 ? 0.66 : pos % 2 == 0 ? 0.33 : 0 );
+);
+// prioridad 0..1 de un paso: L = nivel morfeado, B = nivel prestado
+function prioA(L, B, pos, v, sb, ph, c) local(r, m, h)(
+  r = L > 0 ? 2 + (L < 60 ? L/60 : L < 120 ? 1 + (L-60)/60 : L < 170 ? 2 + (L-120)/50 : min(4, 3 + (L-170)/85))
+            : B > 0 ? 1 + B/255 : 0;
+  m = metricA(pos, meterK[c]);
+  // as X do patron levan sempre a mesma orde; o resto cambia de orde en cada frase (ph = 0..3)
+  h = sin(pos*12.9898 + v*78.233 + (sb + (r >= 6 ? 0 : 2*ph))*37.719 + c*11.131) * 43758.5453; h -= floor(h);
+  (r + 0.999*(0.55*m + 0.45*h)) / 7;
+);
+
+// peso metrico de un paso segun el compas del canal (G)
+function metricG(pos, k)(
+  k == 6 ? ( pos % 12 == 0 ? 1 : pos % 4 == 0 ? 0.66 : pos % 2 == 0 ? 0.33 : 0 ) :
+  k == 5 ? ( pos == 0 || pos == 12 ? 1 : pos % 4 == 0 ? 0.66 : pos % 2 == 0 ? 0.33 : 0 ) :
+  k == 7 ? ( pos == 0 || pos == 8 || pos == 16 ? 1 : pos % 4 == 0 ? 0.66 : pos % 2 == 0 ? 0.33 : 0 ) :
+           ( pos % 8 == 0 ? 1 : pos % 4 == 0 ? 0.66 : pos % 2 == 0 ? 0.33 : 0 );
+);
+// prioridad 0..1 de un paso: L = nivel morfeado, B = nivel prestado
+function prioG(L, B, pos, v, sb, ph, c) local(r, m, h)(
+  r = L > 0 ? 2 + (L < 60 ? L/60 : L < 120 ? 1 + (L-60)/60 : L < 170 ? 2 + (L-120)/50 : min(4, 3 + (L-170)/85))
+            : B > 0 ? 1 + B/255 : 0;
+  m = metricG(pos, meterK[c]);
+  // as X do patron levan sempre a mesma orde; o resto cambia de orde en cada frase (ph = 0..3)
+  h = sin(pos*12.9898 + v*78.233 + (sb + (r >= 6 ? 0 : 2*ph))*37.719 + c*11.131) * 43758.5453; h -= floor(h);
+  (r + 0.999*(0.55*m + 0.45*h)) / 7;
+);
+
+// cuantos golpes permite DENS: nX = pasos de banda X, nAll = pasos candidatos
+function densCount(d, nX, nAll)(
+  d <= 25 ? nX * d / 25 : nX + (nAll - nX) * (d - 25) / 75;
+);
+
+// 1 si el paso pos de la voz v suena con densidad d (ghost = admite rellenos en pasos vacios)
+function denseHitA(c, v, pos, sb, bq, d, ghost) local(j, L, B, pp, pj, rank, nX, nAll, len, bo, ph)(
+  ph = floor(bq / 2);
+  len = meterLen[c];
+  bo = BOR + c*NV*NS + v*NS;
+  L = morphVal(c, v, pos, sb);
+  !ghost && L <= 0 && bo[pos] <= 0 ? 0 : (
+    pp = prioA(L, bo[pos], pos, v, sb, ph, c);
+    rank = 0; nX = 0; nAll = 0;
+    j = 0;
+    loop(len,
+      L = morphVal(c, v, j, sb);
+      B = bo[j];
+      ghost || L > 0 || B > 0 ? (
+        pj = prioA(L, B, j, v, sb, ph, c);
+        nAll += 1;
+        pj >= X_BAND ? nX += 1;
+        pj > pp || (pj == pp && j < pos) ? rank += 1;
+      );
+      j += 1;
+    );
+    // o golpe k entra nun punto distinto de cada un dos 8 compases do ciclo (bq = 0..7):
+    // a 0, 25 e 100 % todos os compases coinciden; entre medias cada golpe entra compas a compas
+    rank + (bq + 0.5) / 8 < densCount(d, nX, nAll);
+  );
+);
+
+// version GUI: out[0..len-1] = 1/0 para toda la voz; valBufG = nivel morfeado
+hitBufG = 9500; prioBufG = 9540; valBufG = 9580;
+function denseRowG(c, v, sb, bq, d, ghost, out) local(j, k, L, B, nX, nAll, rank, n, len, bo, ph)(
+  ph = floor(bq / 2);
+  len = meterLen[c];
+  bo = BOR + c*NV*NS + v*NS;
+  nX = 0; nAll = 0;
+  memset(out, 0, NS); memset(valBufG, 0, NS);
+  j = 0;
+  loop(len,
+    L = morphValG(c, v, j, sb);
+    B = bo[j];
+    valBufG[j] = L;
+    ghost || L > 0 || B > 0 ? (
+      prioBufG[j] = prioG(L, B, j, v, sb, ph, c);
+      nAll += 1;
+      prioBufG[j] >= X_BAND ? nX += 1;
+    ) : prioBufG[j] = -1;
+    j += 1;
+  );
+  n = densCount(d, nX, nAll);
+  j = 0;
+  loop(len,
+    prioBufG[j] < 0 ? out[j] = 0 : (
+      rank = 0; k = 0;
+      loop(len, prioBufG[k] > prioBufG[j] || (prioBufG[k] == prioBufG[j] && k < j) ? rank += 1; k += 1;);
+      out[j] = rank + (bq + 0.5) / 8 < n;
+    );
+    j += 1;
+  );
+);
+
+// ---------- COLA MIDI ----------
+function qPush(type, t, stat, note, vel, dur, ts, c) local(i, done)(
+  i = 0; done = 0;
+  while (i < QSIZE && !done) (
+    evType[i] == 0 ? (
+      evType[i]=type; evTime[i]=t; evStat[i]=stat; evNote[i]=note; evVel[i]=vel;
+      evDur[i]=dur; evStraight[i]=ts; evVoice[i]=c;
+      done = 1;
+    );
+    i += 1;
+  );
+  done;
+);
+
+function sampleOffset(t)(
+  min(max(floor((t - b0) / bpb), 0), samplesblock-1);
+);
+
+// envia y libera los NoteOff pendientes de (canal MIDI, nota); mch < 0 = todos
+function flushNoteOffs(offset, mch, note) local(i)(
+  i = 0;
+  loop(QSIZE,
+    evType[i] == 2 && (mch < 0 || ((evStat[i] & 15) == mch && evNote[i] == note)) ? (
+      midisend(offset, $x80 | (evStat[i] & 15), evNote[i], 0);
+      evType[i] = 0;
+    );
+    i += 1;
+  );
+);
+
+function resetQueue()(
+  flushNoteOffs(0, -1, 0);
+  memset(evType, 0, QSIZE);
+);
+
+// emite en orden temporal los eventos con t < b1 (NoteOff antes que NoteOn si empatan)
+function emitDue() local(i, best, bt, off, n, m)(
+  while (
+    best = -1; bt = b1 - 0.5*bpb;
+    i = 0;
+    loop(QSIZE,
+      evType[i] && (evTime[i] < bt || (best >= 0 && evTime[i] == bt && evType[i] == 2 && evType[best] == 1)) ? (
+        best = i; bt = evTime[i];
+      );
+      i += 1;
+    );
+    best >= 0 ? (
+      off = sampleOffset(evTime[best]);
+      n = evNote[best];
+      m = evStat[best] & 15;
+      evType[best] == 1 ? (
+        evType[best] = 0;
+        flushNoteOffs(off, m, n);        // re-disparo: el NoteOff viejo no corta la nota nueva
+        midisend(off, evStat[best], n, evVel[best]);
+        anticipT[evVoice[best]] = evStraight[best];
+        hitTime[evVoice[best]] = time_precise();
+        hitVel[evVoice[best]] = evVel[best];
+        evType[best] = 2;
+        evTime[best] += evDur[best];
+      ) : (
+        midisend(off, $x80 | m, n, 0);
+        evType[best] = 0;
+      );
+    );
+    best >= 0;
+  );
+);
+
+// ---------- SWING / BREAK ----------
+function swingWarp(t, s) local(cell, u, p)(
+  cell = floor(t*2)/2;
+  u = t - cell;
+  p = s/100*0.5;
+  cell + (u < 0.25 ? u*(p/0.25) : p + (u-0.25)*((0.5-p)/0.25));
+);
+
+function inBreakWindow(t) local(c)(
+  slider9 < 1 ? 0 : (
+    c = floor(t) % slider9 + 1;
+    c >= slider12 && c >= slider9 - (slider10-1);
+  );
+);
+
+// programa los pasos del canal c en la rejilla idx cuyo tiempo recto cae en (h0, h1]
+function scheduleGrid(c, idx, brk, h0, h1)
+  local(b, div, k, kEnd, t, inBrk, sb, ph, bar, pos, src, av, vp, va, hp, ha, thr, alt, val, dyn, vel, note, gate, sv, tt, len, hv)(
+  b = chBase(c);
+  div = divs[max(0, min(10, floor(idx)))];
+  k = floor(h0*div) + 1;
+  kEnd = floor(h1*div);
+  while (k <= kEnd) (
+    t = k / div;
+    inBrk = slider(b+P_BRK) > 0 && inBreakWindow(t) ? 1 : 0;
+    abs(t - skipAt[c]) < 0.000001 ? ( inBrk = -1; skipAt[c] = -1; );
+    t >= 0 && inBrk == brk ? (
+      len = meterLen[c];
+      // compas par/impar (los estilos alternan p4/p5...; en 4/4 igual que GenderBender) y frase
+      bar = floor(t * 8 / len + 0.000001);
+      sb = bar % 2;
+      ph = bar % 8;   // posicion no ciclo de 8 compases
+      pos = k % len;
+      src = max(0, min(9, floor(slider(b+P_SRC))));
+      // densidad; en el break, 3/4 de la densidad menos el aleatorio
+      thr = brk ? max(0, slider(b+P_DENS)*0.75 - rand(slider11)) : slider(b+P_DENS);
+      vp = morphVal(c, srcP[src], pos, sb);
+      hp = denseHitA(c, srcP[src], pos, sb, ph, thr, 1);
+      av = srcA[src];
+      va = 0; ha = 0;
+      av >= 0 ? ( va = morphVal(c, av, pos, sb); ha = denseHitA(c, av, pos, sb, ph, thr, 0); );
+      hp || ha ? (
+        alt = ha;                                  // la voz ALT tiene prioridad
+        val = alt ? va : vp;
+        // golpe anadido por densidad: prestado al 60 % de su nivel, relleno a nivel 45
+        // (con +-20 % de variacion fixa por paso e frase, para que non soen todos iguais)
+        val <= 0 ? (
+          val = BOR[c*NV*NS + (alt ? av : srcP[src])*NS + pos]; val = val > 0 ? val*0.6 : 45;
+          hv = sin(pos*7.31 + floor(ph/2)*3.17 + c*1.93) * 9631.17; hv -= floor(hv);
+          val *= 0.8 + 0.4*hv;
+        );
+        dyn = slider(b+P_DYN) / 100;
+        vel = floor(slider(b+P_VEL) * ((1 - dyn) + dyn * min(val, 255) / 255) + 0.5);
+        vel = max(1, min(127, vel));
+        note = max(0, min(127, chNote(c) + (alt ? chAltSemi(c) : 0)));
+        gate = (alt ? slider(b+P_AGATE) : slider(b+P_GATE)) / 1000 * tempo / 60;
+        sv = 50 + (slider8 - 50) * slider(b+P_SWAMT) / 100;
+        tt = swingWarp(t, sv) + slider(b+P_SLIDE) / 1000 * tempo / 60;
+        qPush(1, tt, chStat(c), note, vel, gate, t, c);
+      );
+    );
+    k += 1;
+  );
+);
+
+// ---------- GUI: estado ----------
+lastCap = 0;
+dragId = -1;
+padDrag = 0;
+noteNames = "C C#D D#E F F#G G#A A#B ";
+srcNames = 9300;  // no se usa como memoria: nombres por indice en la GUI
+
+@slider
+fixStyleVals();
+syncStylesA();
+updatePad();
+
+@serialize
+// guarda el nombre de archivo de cada estilo: si cambia la lista de estilos
+// (se anaden archivos), el proyecto recupera el mismo estilo por nombre.
+// Se guarda como numeros (marca, longitud, caracteres): file_string en @serialize no es fiable.
+SER_MAGIC = 2304;
+file_avail(0) >= 0 ? (
+  // lectura (un estado sin datos deja los sliders como estan)
+  serMagic = 0;
+  file_var(0, serMagic);
+  serMagic == SER_MAGIC ? (
+    sc = 0;
+    loop(NCH,
+      serLen = 0;
+      file_var(0, serLen);
+      strcpy(#serName, "");
+      serLen > 0 && serLen < 1024 ? (
+        loop(serLen,
+          serCh = 0;
+          file_var(0, serCh);
+          sprintf(#serChar, "%c", serCh);
+          strcat(#serName, #serChar);
+        );
+        si = findStyle(#serName);
+        si >= 0 ? (
+          sc == 0 ? slider1 = si : sc == 1 ? slider2 = si : sc == 2 ? slider3 = si : slider4 = si;
+          triedA[sc] = si; loadStyleA(sc);
+        );
+      );
+      sc += 1;
+    );
+  );
+) : (
+  file_var(0, SER_MAGIC);
+  sc = 0;
+  loop(NCH,
+    si = styleVal(sc);
+    si >= 0 && si < numStyles ? baseName(STYLE_NAMES + si, #serName) : strcpy(#serName, "");
+    serLen = strlen(#serName);
+    file_var(0, serLen);
+    si = 0;
+    loop(serLen, serCh = str_getchar(#serName, si); file_var(0, serCh); si += 1;);
+    sc += 1;
+  );
+);
+
+@block
+syncStylesA();
+b0 = beat_position;
+bpb = tempo / (60 * srate);
+b1 = b0 + samplesblock * bpb;
+curBeat = b0;
+
+play_state & 1 ? (
+  (!wasPlaying || abs(b0 - expectedB0) > 0.02) ? (
+    resetQueue();
+    c = 0;
+    loop(NCH,
+      skipAt[c] = wasPlaying && anticipT[c] >= expectedB0 - 0.000001 ? b0 : -1;
+      anticipT[c] = -1000000;
+      c += 1;
+    );
+    evalHorizon = b0 - 0.000001;
+  );
+  h1 = b1 + SLIDE_MAX_MS / 1000 * tempo / 60;
+  c = 0;
+  loop(NCH,
+    cb = chBase(c);
+    scheduleGrid(c, slider(cb+P_DIV), 0, evalHorizon, h1);
+    slider(cb+P_BRK) > 0 ? scheduleGrid(c, slider(cb+P_BRK), 1, evalHorizon, h1);
+    c += 1;
+  );
+  evalHorizon = h1;
+  emitDue();
+  wasPlaying = 1;
+  isPlaying = 1;
+  expectedB0 = b1;
+) : (
+  wasPlaying ? resetQueue();
+  wasPlaying = 0;
+  isPlaying = 0;
+);
+
+// notas de prueba (boton TEST: sirve para el MIDI learn de la Pulsar), con o sin transporte
+c = 0;
+loop(NCH,
+  testLeft[c] > 0 ? (
+    testLeft[c] < samplesblock ? (
+      midisend(floor(testLeft[c]), $x80 | (testStat[c] & 15), testNote[c], 0);
+      testLeft[c] = 0;
+    ) : testLeft[c] -= samplesblock;
+  );
+  testReq[c] ? (
+    testReq[c] = 0;
+    cb = chBase(c);
+    testLeft[c] > 0 ? midisend(0, $x80 | (testStat[c] & 15), testNote[c], 0);
+    testStat[c] = chStat(c);
+    testNote[c] = chNote(c);
+    midisend(0, testStat[c], testNote[c], slider(cb+P_VEL));
+    testLeft[c] = max(slider(cb+P_GATE), 150) / 1000 * srate;
+    hitTime[c] = time_precise();
+    hitVel[c] = slider(cb+P_VEL);
+  );
+  c += 1;
+);
+
+@gfx 860 470
+// ---- toda la UI se dibuja a 860x470 en un buffer y se reescala a la ventana ----
+UI_W = 860; UI_H = 470; UI_BUF = 10;
+!uiInit ? ( gfx_setimgdim(UI_BUF, UI_W, UI_H); uiInit = 1; );
+uiScale = max(0.1, min(gfx_w/UI_W, gfx_h/UI_H));
+uiOffX = floor((gfx_w - UI_W*uiScale)/2);
+uiOffY = floor((gfx_h - UI_H*uiScale)/2);
+mx = (mouse_x - uiOffX)/uiScale;
+my = (mouse_y - uiOffY)/uiScale;
+clickL = (mouse_cap & 1) && !(lastCap & 1);
+clickR = (mouse_cap & 2) && !(lastCap & 2);
+modCtrl = mouse_cap & 4;
+modShift = mouse_cap & 8;
+!(mouse_cap & 1) ? ( dragId = -1; padDrag = 0; );
+wheel = mouse_wheel; mouse_wheel = 0;
+nowT = time_precise();
+
+gfx_dest = UI_BUF;
+gfx_mode = 0;
+gfx_set(0.075, 0.075, 0.08, 1);
+gfx_rect(0, 0, UI_W, UI_H);
+
+// colores por canal
+function chColor(c, a)(
+  c == 0 ? gfx_set(0.96, 0.52, 0.22, a);   // BD naranja
+  c == 1 ? gfx_set(0.66, 0.50, 0.98, a);   // BASS violeta
+  c == 2 ? gfx_set(0.30, 0.80, 0.90, a);   // SD cian
+  c == 3 ? gfx_set(0.80, 0.88, 0.32, a);   // HHT lima
+);
+
+function hover(x, y, w, h)( mx >= x && mx < x+w && my >= y && my < y+h; );
+
+function textC(str, cx, y) local(w, h)(
+  gfx_measurestr(str, w, h);
+  gfx_x = floor(cx - w/2); gfx_y = y;
+  gfx_drawstr(str);
+);
+
+// texto recortado a un ancho maximo
+function textFit(str, x, y, maxw) local(w, h, n)(
+  strcpy(#tf, str);
+  gfx_measurestr(#tf, w, h);
+  n = strlen(#tf);
+  while (w > maxw && n > 1) (
+    n -= 1;
+    strcpy_substr(#tf, str, 0, n);
+    strcat(#tf, "..");
+    gfx_measurestr(#tf, w, h);
+  );
+  gfx_x = x; gfx_y = y;
+  gfx_drawstr(#tf);
+);
+
+function button(x, y, w, h, label) local(hv)(
+  hv = hover(x, y, w, h);
+  hv ? gfx_set(0.27, 0.27, 0.29, 1) : gfx_set(0.16, 0.16, 0.17, 1);
+  gfx_rect(x, y, w, h);
+  gfx_set(0.38, 0.38, 0.40, 1);
+  gfx_rect(x, y, w, 1); gfx_rect(x, y+h-1, w, 1); gfx_rect(x, y, 1, h); gfx_rect(x+w-1, y, 1, h);
+  gfx_set(0.92, 0.92, 0.92, 1);
+  textC(label, x + w/2, y + (h - gfx_texth)/2);
+  hv && clickL;
+);
+
+// cambia un slider desde la GUI y avisa al host
+function setSlider(idx, v)(
+  slider(idx) != v ? (
+    slider(idx) = v;
+    sliderchange(slider(idx));
+    slider_automate(slider(idx));
+  );
+);
+
+// texto del valor de un knob segun su tipo
+function fmtVal(v, kind) local(d, o, ci)(
+  kind == 0 ? sprintf(#fv, "%d", v);
+  kind == 1 || kind == 2 ? (
+    kind == 2 && v < 1 ? strcpy(#fv, "OFF") : (
+      d = divs[floor(v)];
+      d == 1 ? strcpy(#fv, "x1/8");  d == 2 ? strcpy(#fv, "x1/4");
+      d == 4 ? strcpy(#fv, "x1/2");  d == 8 ? strcpy(#fv, "x1");
+      d == 12 ? strcpy(#fv, "x1.5"); d == 16 ? strcpy(#fv, "x2");
+      d == 24 ? strcpy(#fv, "x3");   d == 32 ? strcpy(#fv, "x4");
+    );
+  );
+  kind == 3 ? (
+    ci = (v % 12) * 2;
+    strcpy_substr(#nn, noteNames, ci, str_getchar(noteNames, ci+1) == 32 ? 1 : 2);
+    o = floor(v/12) - 1;
+    sprintf(#fv, "%d %s%d", v, #nn, o);
+  );
+  kind == 4 ? sprintf(#fv, "%dms", v);
+  kind == 5 ? ( v > 0 ? sprintf(#fv, "+%d", v) : sprintf(#fv, "%d", v); );
+  kind == 6 ? sprintf(#fv, "%d%%", v);
+  kind == 7 ? sprintf(#fv, "ch%d", v);
+  kind == 8 ? ( v > 0 ? sprintf(#fv, "+%dst", v) : sprintf(#fv, "%dst", v); );
+  kind == 9 ? sprintf(#fv, "%.1f%%", v);
+  #fv;
+);
+
+// knob: arrastrar en vertical (shift = fino), rueda, ctrl+click o click derecho = valor por defecto
+function knob(cx, cy, idx, mn, mx_, def, label, kind, c) local(r, v, norm, a0, a1, av, hv, range, sens, kv, i, st)(
+  r = 13;
+  v = slider(idx);
+  range = mx_ - mn;
+  hv = hover(cx - r - 6, cy - r - 6, 2*r + 12, 2*r + 26);
+  hv && clickL && !modCtrl ? ( dragId = idx; dragY = my; dragV = v; );
+  hv && (clickR || (clickL && modCtrl)) ? ( setSlider(idx, def); v = def; dragId = -1; );
+  st = kind == 9 ? 0.1 : 1;
+  dragId == idx && (mouse_cap & 1) ? (
+    sens = modShift ? 900 : 180;
+    kv = dragV + (dragY - my) / sens * max(range, 30);
+    range < 30 ? kv = dragV + (dragY - my) / (modShift ? 40 : 12);
+    kv = max(mn, min(mx_, floor(kv / st + 0.5) * st));
+    setSlider(idx, kv); v = kv;
+  );
+  hv && wheel != 0 ? (
+    kv = v + (wheel > 0 ? 1 : -1) * (modShift ? st : max(1, floor(range/50)));
+    kv = max(mn, min(mx_, floor(kv / st + 0.5) * st));
+    setSlider(idx, kv); v = kv;
+  );
+  norm = range > 0 ? (v - mn) / range : 0;
+  a0 = -0.75*$pi; a1 = 0.75*$pi;
+  av = a0 + norm * (a1 - a0);
+  gfx_set(0.30, 0.30, 0.33, 1);
+  i = 0; loop(3, gfx_arc(cx, cy, r - i, a0, a1, 1); i += 1;);
+  chColor(c, hv || dragId == idx ? 1 : 0.85);
+  // los knobs bipolares se pintan desde el centro
+  mn < 0 && mx_ > 0 ? (
+    i = 0; loop(3, gfx_arc(cx, cy, r - i, min(0, av), max(0, av), 1); i += 1;);
+  ) : (
+    i = 0; loop(3, gfx_arc(cx, cy, r - i, a0, av, 1); i += 1;);
+  );
+  gfx_set(0.13, 0.13, 0.14, 1);
+  gfx_circle(cx, cy, r - 4, 1, 1);
+  gfx_set(0.93, 0.93, 0.93, 1);
+  gfx_line(cx + sin(av)*3, cy - cos(av)*3, cx + sin(av)*(r-4), cy - cos(av)*(r-4), 1);
+  gfx_setfont(3);
+  gfx_set(0.55, 0.55, 0.58, 1);
+  textC(label, cx, cy - r - 13);
+  gfx_set(0.90, 0.90, 0.90, 1);
+  textC(fmtVal(v, kind), cx, cy + r + 3);
+);
+
+function srcName(s)(
+  s == 0 ? "KICK" : s == 1 ? "SNARE" : s == 2 ? "CLAP" : s == 3 ? "HH CL" : s == 4 ? "HH OP" :
+  s == 5 ? "HI TOM" : s == 6 ? "LO TOM" : s == 7 ? "SN+CLAP" : s == 8 ? "HH CL+OP" : "TOMS";
+);
+
+// nombre visible de un archivo de estilo: sin carpeta ni ".txt"
+function cleanName(str) local(n, k, ch)(
+  strcpy(#sl, str);
+  n = strlen(#sl); k = n - 1;
+  while (k >= 0 && (ch = str_getchar(#sl, k)) != 47 && ch != 92) ( k -= 1; );
+  k >= 0 ? ( strcpy_substr(#sl, #sl, k + 1); n = strlen(#sl); );
+  n > 4 && stricmp(strcpy_substr(#slx, #sl, n-4, 4), ".txt") == 0 ? strcpy_substr(#sl, #sl, 0, n-4);
+  #sl;
+);
+
+function styleLabel(p)(
+  p >= 0 && p < numStyles ? cleanName(STYLE_NAMES + p) : strcpy(#sl, "(no style)");
+);
+
+// para a caixa do canal: sen a etiqueta de compas (xa se ve ao lado de STYLE)
+function styleBoxLabel(p) local(n)(
+  styleLabel(p);
+  n = strlen(#sl);
+  n > 6 && match("* (?-?)", #sl) ? strcpy_substr(#sl, #sl, 0, n - 6);
+  #sl;
+);
+
+function styleMenu(c, x, y) local(i, cur, r, ch)(
+  strcpy(#menu, "");
+  cur = styleVal(c);
+  i = 0;
+  loop(numStyles,
+    i > 0 ? strcat(#menu, "|");
+    i == cur ? strcat(#menu, "!");
+    styleLabel(i);
+    ch = str_getchar(#sl, 0);
+    ch == 33 || ch == 35 || ch == 60 || ch == 62 ? strcat(#menu, " ");  // ! # < > son marcas de menu
+    strcat(#menu, #sl);
+    i += 1;
+  );
+  numStyles < 1 ? strcpy(#menu, "#(no styles found in Data/drum_styles_v)");
+  gfx_x = x*uiScale + uiOffX; gfx_y = y*uiScale + uiOffY;
+  gfx_dest = -1;
+  r = gfx_showmenu(#menu);
+  gfx_dest = UI_BUF;
+  numStyles < 1 ? 0 : r;
+);
+
+// cambia el estilo del canal c a la posicion p (da la vuelta): mismo camino que un knob
+// (slider numerico + sliderchange + slider_automate) y carga inmediata desde la GUI.
+// Si la GUI no pudiera abrir el archivo, el hilo de audio lo carga en su siguiente bloque.
+function setStyle(c, p)(
+  numStyles > 0 ? (
+    p = floor(p); p -= floor(p / numStyles) * numStyles;   // modulo sin negativos
+    setSlider(c + 1, p);
+    loadStyleG(c);
+  );
+);
+
+function stepStyle(c, d)( setStyle(c, styleVal(c) + d); );
+
+// si el host no tenia la lista lista en @init, se vuelve a escanear desde la GUI
+numStyles < 2 && nowT - lastScanT > 1 ? (
+  numStyles = scanStyles();
+  numStyles > 0 ? (
+    gc = 0;
+    loop(NCH, styleVal(gc) >= numStyles ? setStyle(gc, 0) : loadedSt[gc] != styleVal(gc) ? loadStyleG(gc); gc += 1;);
+  );
+);
+
+// ---------- cabecera ----------
+gfx_setfont(1, "Arial", 17, 'b');
+gfx_setfont(2, "Arial", 13, 'b');
+gfx_setfont(3, "Arial", 11);
+gfx_setfont(4, "Arial", 12);
+gfx_setfont(5, "Arial", 11, 'b');
+
+gfx_setfont(1);
+gfx_set(0.95, 0.95, 0.95, 1);
+gfx_x = 16; gfx_y = 12; gfx_drawstr("GENDERBENDER");
+gfx_set(0.96, 0.52, 0.22, 1);
+gfx_drawstr(" P23");
+gfx_setfont(3);
+gfx_set(0.5, 0.5, 0.52, 1);
+gfx_x += 10; gfx_y = 17; gfx_drawstr("for SOMA Pulsar-23  ·  BD · BASS · SD · HHT  ·  ");
+numStyles > 1 ? ( sprintf(#nst, styleSrc == 2 ? "%d styles (list file)" : "%d styles", numStyles); gfx_drawstr(#nst); ) : (
+  gfx_set(1, 0.35, 0.3, 1); gfx_drawstr(numStyles == 1 ? "1 style found" : "no styles found");
+);
+
+gfx_setfont(2);
+button(620, 10, 72, 24, "ALL RND") ? (
+  numStyles < 2 ? numStyles = scanStyles();
+  rr = floor(rand(numStyles));
+  gc = 0; loop(NCH, setStyle(gc, rr); gc += 1;);
+);
+button(700, 10, 72, 24, "EACH RND") ? (
+  numStyles < 2 ? numStyles = scanStyles();
+  gc = 0; loop(NCH, setStyle(gc, floor(rand(numStyles))); gc += 1;);
+);
+button(780, 10, 64, 24, "SRC RST") ? (
+  setSlider(chBase(0)+P_SRC, 0); setSlider(chBase(1)+P_SRC, 9);
+  setSlider(chBase(2)+P_SRC, 7); setSlider(chBase(3)+P_SRC, 8);
+);
+
+// ---------- canales ----------
+COLW = 150;
+gc = 0;
+loop(NCH,
+  x0 = 12 + gc*COLW;
+  gcb = chBase(gc);
+  gfx_set(0.115, 0.115, 0.125, 1);
+  gfx_rect(x0, 46, COLW - 8, 412);
+  chColor(gc, 1);
+  gfx_rect(x0, 46, COLW - 8, 3);
+
+  // nombre + LED + TEST
+  gfx_setfont(1);
+  chColor(gc, 1);
+  gfx_x = x0 + 10; gfx_y = 58;
+  gfx_drawstr(gc == 0 ? "BD" : gc == 1 ? "BASS" : gc == 2 ? "SD" : "HHT");
+  led = max(0, 1 - (nowT - hitTime[gc]) / 0.12);
+  gfx_set(0.25, 0.25, 0.27, 1);
+  gfx_circle(x0 + 70, 67, 5, 1, 1);
+  led > 0 ? ( chColor(gc, led * (0.4 + 0.6*hitVel[gc]/127)); gfx_circle(x0 + 70, 67, 5, 1, 1); );
+  gfx_setfont(3);
+  button(x0 + 88, 57, 46, 20, "TEST") ? testReq[gc] = 1;
+
+  // estilo
+  gfx_set(0.5, 0.5, 0.52, 1);
+  gfx_x = x0 + 10; gfx_y = 86; gfx_drawstr("STYLE");
+  meterK[gc] != 4 ? (
+    chColor(gc, 1);
+    gfx_x = x0 + 54;
+    gfx_drawstr(meterK[gc] == 6 ? "6/8" : meterK[gc] == 3 ? "3/4" : meterK[gc] == 5 ? "5/8" : "7/8");
+  );
+  button(x0 + 6, 100, 13, 20, "<") ? stepStyle(gc, -1);
+  button(x0 + COLW - 27, 100, 13, 20, ">") ? stepStyle(gc, 1);
+  hv = hover(x0 + 21, 100, COLW - 50, 20);
+  hv ? gfx_set(0.22, 0.22, 0.24, 1) : gfx_set(0.15, 0.15, 0.16, 1);
+  gfx_rect(x0 + 21, 100, COLW - 50, 20);
+  gfx_set(0.92, 0.92, 0.92, 1);
+  gfx_setfont(5);
+  // blanco = cargado · gris = pendiente · rojo = no se pudo abrir el archivo
+  loadedSt[gc] == styleVal(gc) ? gfx_set(0.92, 0.92, 0.92, 1) : loadFail[gc] ? gfx_set(1, 0.4, 0.35, 1) : gfx_set(0.6, 0.6, 0.62, 1);
+  textFit(styleBoxLabel(styleVal(gc)), x0 + 24, 104, COLW - 56);
+  hv && wheel != 0 ? stepStyle(gc, wheel > 0 ? -1 : 1);
+  hv && clickL ? ( r = styleMenu(gc, x0 + 21, 120); r > 0 ? setStyle(gc, r - 1); );
+
+  // fuente
+  gfx_setfont(3);
+  gfx_set(0.5, 0.5, 0.52, 1);
+  gfx_x = x0 + 10; gfx_y = 126; gfx_drawstr("SOURCE");
+  s = slider(gcb+P_SRC);
+  button(x0 + 6, 140, 13, 20, "<") ? setSlider(gcb+P_SRC, (s + 9) % 10);
+  button(x0 + COLW - 27, 140, 13, 20, ">") ? setSlider(gcb+P_SRC, (s + 1) % 10);
+  hv = hover(x0 + 21, 140, COLW - 50, 20);
+  hv ? gfx_set(0.22, 0.22, 0.24, 1) : gfx_set(0.15, 0.15, 0.16, 1);
+  gfx_rect(x0 + 21, 140, COLW - 50, 20);
+  chColor(gc, 1);
+  gfx_setfont(4);
+  textC(srcName(slider(gcb+P_SRC)), x0 + 21 + (COLW - 50)/2, 143);
+  hv && clickL ? (
+    strcpy(#menu, "");
+    gi = 0;
+    loop(10, gi > 0 ? strcat(#menu, "|"); gi == s ? strcat(#menu, "!"); strcat(#menu, srcName(gi)); gi += 1;);
+    gfx_x = (x0 + 21)*uiScale + uiOffX; gfx_y = 160*uiScale + uiOffY;
+    gfx_dest = -1; r = gfx_showmenu(#menu); gfx_dest = UI_BUF;
+    r > 0 ? setSlider(gcb+P_SRC, r - 1);
+  );
+
+  // vista de pasos: el patron que suena con el pad, la densidad y el compas actuales
+  glen = meterLen[gc];
+  gbar = isPlaying ? floor(curBeat * 8 / glen + 0.000001) : 0;
+  sb = gbar % 2;
+  gph = gbar % 8;
+  src = max(0, min(9, floor(slider(gcb+P_SRC))));
+  dv = divs[max(0, min(10, floor(slider(gcb+P_DIV))))];
+  ph = isPlaying ? floor(curBeat * dv + 0.000001) % glen : -1;
+  hitP = 9620; hitA = 9660; valP = 9700; valA = 9740;
+  denseRowG(gc, srcP[src], sb, gph, slider(gcb+P_DENS), 1, hitP);
+  memcpy(valP, valBufG, NS);
+  srcA[src] >= 0 ? ( denseRowG(gc, srcA[src], sb, gph, slider(gcb+P_DENS), 0, hitA); memcpy(valA, valBufG, NS); )
+                 : ( memset(hitA, 0, NS); memset(valA, 0, NS); );
+  gi = 0;
+  loop(NS,
+    vp = valP[gi]; va = valA[gi];
+    hp = hitP[gi]; ha = hitA[gi];
+    cx = x0 + 7 + gi*4;
+    gi < glen ? gfx_set(0.17, 0.17, 0.18, 1) : gfx_set(0.10, 0.10, 0.11, 1);
+    gfx_rect(cx, 168, 3, 22);
+    ha ? ( gfx_set(1, 1, 1, 0.95); gfx_rect(cx, 168, 3, 22); ) : (
+      hp ? ( chColor(gc, 1); vp > 0 ? gfx_rect(cx, 168, 3, 22) : gfx_rect(cx, 179, 3, 11); ) : (
+        max(vp, va) > 0 ? ( chColor(gc, 0.15 + 0.35*max(vp, va)/255); gfx_rect(cx, 168 + 22 - max(vp, va)/255*22, 3, max(vp, va)/255*22); );
+      );
+    );
+    gi == ph ? ( gfx_set(1, 1, 1, 0.9); gfx_rect(cx, 192, 3, 2); );
+    metricG(gi, meterK[gc]) >= 1 && gi < glen ? ( gfx_set(0.4, 0.4, 0.42, 1); gfx_rect(cx, 164, 1, 2); );
+    gi += 1;
+  );
+
+  // knobs: 3 columnas x 3 filas (+ ALT + en el BASS)
+  kx0 = x0 + 25; kx1 = x0 + 71; kx2 = x0 + 117;
+  ky = 230;
+  knob(kx0, ky, gcb+P_DENS, 0, 100, 25, "DENS", 9, gc);
+  knob(kx1, ky, gcb+P_DIV, 0, 10, 4, "DIV", 1, gc);
+  knob(kx2, ky, gcb+P_BRK, 0, 10, 0, "BREAK", 2, gc);
+  ky += 60;
+  knob(kx0, ky, gcb+P_VEL, 1, 127, 127, "VEL", 0, gc);
+  knob(kx1, ky, gcb+P_DYN, 0, 100, 50, "DYN", 6, gc);
+  knob(kx2, ky, gcb+P_GATE, 1, 2000, gc == 1 ? 150 : gc == 3 ? 15 : 30, "GATE", 4, gc);
+  ky += 60;
+  knob(kx0, ky, gcb+P_AGATE, 1, 2000, gc == 1 ? 150 : gc == 3 ? 250 : 30, gc == 3 ? "OPEN" : "ALT GT", 4, gc);
+  knob(kx1, ky, gcb+P_SWAMT, 0, 100, 100, "SWING", 6, gc);
+  knob(kx2, ky, gcb+P_SLIDE, -30, 30, 0, "SLIDE", 5, gc);
+  ky += 60;
+  gc == 1 ? knob(kx0, ky, gcb+P_ASEMI, -24, 24, 12, "ALT +", 8, gc);
+  // salida fija
+  gfx_setfont(3);
+  gfx_set(0.42, 0.42, 0.45, 1);
+  outX = gc == 1 ? x0 + 94 : x0 + (COLW - 8)/2;
+  textC("MIDI OUT", outX, ky - 13);
+  gfx_set(0.80, 0.80, 0.82, 1);
+  sprintf(#outs, "ch%d · %s", gc == 1 ? 2 : 10, fmtVal(chNote(gc), 3));
+  textC(#outs, outX, ky + 2);
+  gc += 1;
+);
+
+// ---------- panel derecho: pad XY ----------
+PX = 626; PY = 64; PW = 220;
+gfx_set(0.115, 0.115, 0.125, 1);
+gfx_rect(PX - 8, 46, PW + 16, 412);
+gfx_setfont(3);
+gfx_set(0.5, 0.5, 0.52, 1);
+gfx_x = PX; gfx_y = 50; gfx_drawstr("XY PAD   (right-click / ctrl: center)");
+padHover = hover(PX, PY, PW, PW);
+padHover && clickL && !modCtrl ? padDrag = 1;
+padHover && (clickR || (clickL && modCtrl)) ? ( setSlider(6, 0); setSlider(7, 0); updatePad(); );
+padDrag ? (
+  setSlider(6, max(-100, min(100, floor(((mx - PX)/PW*200 - 100) + 0.5))));
+  setSlider(7, max(-100, min(100, floor((100 - (my - PY)/PW*200) + 0.5))));
+  updatePad();
+);
+gfx_set(0.08, 0.08, 0.085, 1);
+gfx_rect(PX, PY, PW, PW);
+// cuadrante activo
+updatePad();
+gfx_set(1, 1, 1, 0.035);
+sector == 1 ? gfx_rect(PX, PY + PW/2, PW/2, PW/2);
+sector == 2 ? gfx_rect(PX, PY, PW/2, PW/2);
+sector == 3 ? gfx_rect(PX + PW/2, PY, PW/2, PW/2);
+sector == 4 ? gfx_rect(PX + PW/2, PY + PW/2, PW/2, PW/2);
+gfx_set(0.25, 0.25, 0.27, 1);
+gfx_rect(PX + PW/2, PY, 1, PW);
+gfx_rect(PX, PY + PW/2, PW, 1);
+gfx_rect(PX, PY, PW, 1); gfx_rect(PX, PY + PW - 1, PW, 1); gfx_rect(PX, PY, 1, PW); gfx_rect(PX + PW - 1, PY, 1, PW);
+// patron que suena en cada punto (formula de GenderBender)
+gfx_setfont(3);
+gfx_set(0.45, 0.45, 0.48, 1);
+textC("P0", PX + 12, PY + 4);               textC("P8", PX + PW/2 + 12, PY + 4);  textC("P6", PX + PW - 12, PY + 4);
+textC("P4", PX + 12, PY + PW/2 + 4);        textC("P4", PX + PW/2 + 12, PY + PW/2 + 4); textC("P2", PX + PW - 12, PY + PW/2 + 4);
+textC("P0", PX + 12, PY + PW - 16);         textC("P0", PX + PW/2 + 12, PY + PW - 16); textC("P8", PX + PW - 12, PY + PW - 16);
+dotX = PX + (slider6 + 100)/200*PW;
+dotY = PY + (100 - slider7)/200*PW;
+gfx_set(1, 1, 1, 0.25);
+gfx_rect(dotX, PY, 1, PW); gfx_rect(PX, dotY, PW, 1);
+gfx_set(0.96, 0.52, 0.22, 1);
+gfx_circle(dotX, dotY, 7, 1, 1);
+gfx_set(1, 1, 1, 1);
+gfx_circle(dotX, dotY, 7, 0, 1);
+gfx_setfont(4);
+gfx_set(0.85, 0.85, 0.85, 1);
+sprintf(#xy, "X %d   Y %d", slider6, slider7);
+textC(#xy, PX + PW/2, PY + PW + 6);
+
+// globales
+gfx_setfont(3);
+gfx_set(0.5, 0.5, 0.52, 1);
+gfx_x = PX; gfx_y = 316; gfx_drawstr("GROOVE");
+gfx_x = PX + 92; gfx_drawstr("BREAK");
+knob(PX + 20, 360, 8, 50, 75, 50, "SWING", 6, 0);
+knob(PX + 70, 360, 9, 0, 32, 4, "EVERY", 0, 1);
+knob(PX + 120, 360, 10, 1, 32, 1, "LENGTH", 0, 1);
+knob(PX + 170, 360, 12, 0, 32, 4, "OFFSET", 0, 1);
+knob(PX + 70, 420, 11, 0, 100, 0, "RANDOM", 6, 1);
+gfx_set(0.42, 0.42, 0.45, 1);
+gfx_x = PX + 104; gfx_y = 404; gfx_drawstr("drag: value");
+gfx_x = PX + 104; gfx_y = 418; gfx_drawstr("shift: fine · wheel");
+gfx_x = PX + 104; gfx_y = 432; gfx_drawstr("right-click: default");
+
+lastCap = mouse_cap;
+
+// ---- volcar el buffer a la ventana, reescalado y centrado ----
+gfx_dest = -1;
+gfx_set(0.06, 0.06, 0.065, 1);
+gfx_rect(0, 0, gfx_w, gfx_h);
+gfx_set(1, 1, 1, 1);
+gfx_blit(UI_BUF, 1, 0, 0, 0, UI_W, UI_H, uiOffX, uiOffY, UI_W*uiScale, UI_H*uiScale);
