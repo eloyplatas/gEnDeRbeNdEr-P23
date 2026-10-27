@@ -1,0 +1,65 @@
+name: DRILL N BASS 180
+# Breakcore & extreme. Tempo sugerido: 180 BPM.
+# Drill n bass: redobres de caixa en fusas e baixo de jazz rapido.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    XXXX XXXX XXXX XXXX
+
+[p1]
+kick   X... .... .... ....
+snare  ....X... X..XXXXX ....X..X .XXXXXXX
+hhc    XXXX XXXX XXXX XXXX
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X.....X. ..X..Xx. X.....X. ..X.....
+snare  ..o.X.o. Xo.XoXXX ..o.XooX XXo.XoXX
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+lotom  X.....X. ..X..X.. X.....X. ..X.....
+
+[p3]
+kick   X.....X. ..X...x. X.X...X. ..X..X..
+snare  ..o.X.o. XooXXXXX ..o.Xo.X oXXXXXXX
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+hitom  .... .... .... ..X.
+lotom  X..X .X.. XX.. X...
+
+[p4]                         # BASE
+kick   X.....X. ..X..X.. X.....X. ..X.....
+snare  ....X... X..X.XXX ....X..X XX..X.XX
+hhc    XXXX XXXX XXXX XXXX
+lotom  X.....X. ..X..X.. X.....X. ..X.....
+
+[p5]
+kick   X.....X. ..X..... X.X...X. ..X..X..
+snare  ....X... X..XXXXX ....X..X .XXXXXXX
+hhc    XXXX XXXX XXXX XXXX
+lotom  X..X .X.. XX.. X...
+
+[p6]                         # VARIACION
+kick   X.....X. ..X..X.. X.....X. ..X.....
+snare  ....X... X..X.XXX ....X..X XX..X.XX
+hhc    XX.X XX.X XX.X XX.X
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... ...X .X..
+lotom  X.....X. ..X..X.. X....... ........
+
+[p7]
+kick   X.....X. ..X..... X.X...X. ..X..X..
+snare  ....X... X..XXXXX ....X..X .XXXXXXX
+hhc    XX.X XX.X XX.X XX.X
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .X.. .x..
+lotom  X..X .X.. X... X.Xo
+
+[p8]                         # FILL
+kick   X..X .... X... ....
+snare  ........ ........ xoxoxoxo xoXXXXXX
+hhc    ..Xo XoXo .... ....
+hho    X... .... .... ....
+hitom  .... ..XX .... ....
+lotom  .... .... .... ...X

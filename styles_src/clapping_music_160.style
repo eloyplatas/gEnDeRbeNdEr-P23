@@ -1,0 +1,66 @@
+name: CLAPPING MUSIC 160
+meter: 6/8
+# IDM & experimental. Tempo sugerido: 160 BPM (negras; compas 6/8).
+# Clapping Music (Steve Reich, 1972): o mesmo patron de 12 corcheas
+# nas palmas (clap) e no segundo intérprete (snare), desprazado unha corchea por patron:
+# p0 = unison, p1..p8 = desprazamentos 1..8. Mover o pad e facer fase.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+kick   X..... ......
+snare  XXX.XX .X.XX.
+clap   XXX.XX .X.XX.
+lotom  X..... ......
+
+[p1]
+kick   X..... ......
+snare  XX.XX. X.XX.X
+clap   XXX.XX .X.XX.
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X..... ......
+snare  X.XX.X .XX.XX
+clap   XXX.XX .X.XX.
+lotom  X..... ......
+
+[p3]
+kick   X..... ......
+snare  .XX.X. XX.XXX
+clap   XXX.XX .X.XX.
+hitom  ...... ....X.
+lotom  X..... ......
+
+[p4]                         # BASE
+kick   X..... ......
+snare  XX.X.X X.XXX.
+clap   XXX.XX .X.XX.
+lotom  X..... ......
+
+[p5]
+kick   X..... ......
+snare  X.X.XX .XXX.X
+clap   XXX.XX .X.XX.
+lotom  X..... ......
+
+[p6]                         # VARIACION
+kick   X..... ......
+snare  .X.XX. XXX.XX
+clap   XXX.XX .X.XX.
+lotom  X..... ......
+
+[p7]
+kick   X..... ......
+snare  X.XX.X XX.XX.
+clap   XXX.XX .X.XX.
+hitom  ...... ..Xx..
+lotom  X..... ......
+
+[p8]                         # FILL
+kick   X..... ......
+snare  .XX.XX X.XX.X
+clap   XXX.XX .X.XX.
+hho    ...... ....X.
+hitom  ...... ..x.X.
+lotom  X..... ......
