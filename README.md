@@ -34,14 +34,8 @@ What is new compared with the original GenderBender
 
 - Style tools: make_style.py accepts a meter line, and the fingerprints page shows every pattern of every style.
 
-- PDF Manual in English, Galego and Castellano
-
-GenderBender P23 is free software under the GNU GPL v3.
-
-
-
-
-
 - Style tools: make_style.py accepts a meter line, and the fingerprints page shows every pattern of every style.
- 
+
+- PDF Manual in English, Galego and Castellano 
+
 GenderBender P23 is free software under the GNU GPL v3.
