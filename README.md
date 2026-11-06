@@ -1,19 +1,13 @@
-# GenderBender
+# GenderBender-P23
 
-A MIDI drum-pattern generator for REAPER (JSFX plugin). It plays 7 voices (kick, snare, clap, closed hat, open hat, high tom, low tom) from styles of 9 patterns each, blended with an XY pad.
+<img width="860" height="514" alt="Captura de pantalla_2026-11-06_13-01-38" src="https://github.com/user-attachments/assets/20519e3a-5c48-40db-9bfa-f678a5fd11b5" />
+
+
 
 **[See every style's patterns →](https://toast3r.github.io/genderbender/fingerprints.html)**
 
-## Install
 
-```sh
-sh tools/install.sh                                   # macOS
-REAPER_DIR="$APPDATA/REAPER" sh tools/install.sh     # Windows (Git Bash) or another folder
-```
-
-**SOMA Pulsar-23:** `GenderBenderP23/` is a 4-channel version (BD, BASS, SD, HHT) that sends MIDI to the Pulsar, with per-channel note/channel, velocity from the pattern and gate length as sustain. See [GenderBenderP23/README.md](GenderBenderP23/README.md).
-
-In REAPER, add **MIDI GenderBender** to a track, send its MIDI to a drum sampler (base note 36), and press play. **ALL RND** picks a random style for all voices, **EACH RND** one per voice.
+**SOMA Pulsar-23:** `GenderBenderP23/` is a 4-channel version (BD, BASS, SD, HHT) that sends MIDI to the Pulsar, with per-channel note/channel, velocity from the pattern and gate length as sustain.In REAPER, add **MIDI GenderBender** to a track, send its MIDI to a drum sampler (base note 36), and press play. **ALL RND** picks a random style for all voices, **EACH RND** one per voice.
 
 Other DAWs: load `Effects/GenderBender/genderbender.jsfx` in the [ysfx](https://github.com/JoepVanlier/ysfx) instrument plugin (VST3/AU/CLAP). Install with `REAPER_DIR=<some folder> sh tools/install.sh` so `Effects/` and `Data/` sit side by side.
 
