@@ -1,0 +1,64 @@
+name: BREAKCORE AMEN 180
+# Breakcore & extreme. Tempo sugerido: 180 BPM.
+# Breakcore: Amen cortado con repeticions en fusas.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X. X.X. X.X. X.X.
+
+[p1]
+kick   X... .... .... ....
+snare  ........ X.....X. X.X.X.XX XXXXXXXX
+hhc    X...X... X...X... X...X... XXXXXXXX
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X...X... ......X. ....X..X ........
+snare  ......o. X...o.X. o.X...o. X.X.XoXX
+hhc    X-X- X-X- X-X- X-X-
+hho    .... .... .... ..X.
+lotom  X... .... .... X...
+
+[p3]
+kick   X.X. ..XX ..X. .X..
+snare  ......o. X...o.X. X.X.XoXX XXXXXXXX
+hhc    X.-.X.-. X.-.X.-. X.-.X.-. XXXXXXXX
+hho    .... .... .... ..X.
+hitom  .... .... .... ..X.
+lotom  X... ..X. .... ....
+
+[p4]                         # BASE
+kick   X...X... ......X. ....X..X ........
+snare  ........ X.....X. ..X..... X.X.X.XX
+hhc    X.X. X.X. X.X. X.X.
+lotom  X... .... .... X...
+
+[p5]
+kick   X.X. ..XX ..X. ....
+snare  ........ X.....X. X.X.X.XX XXXXXXXX
+hhc    X...X... X...X... X...X... XXXXXXXX
+lotom  X... ..X. .... ....
+
+[p6]                         # VARIACION
+kick   X...X... ......X. ....X..X ........
+snare  ........ X.....X. ..X..... X.X.X.XX
+hhc    X... X... X... X...
+hho    ..X. ..X. ..X. ..X.
+lotom  X... .... .... X...
+
+[p7]
+kick   X.X. ..XX ..X. ....
+snare  ........ X.....X. X.X.X.XX XXXXXXXX
+hhc    X....... X....... X....... XXXX.XXX
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .... Xx..
+lotom  X... ..X. .... ..Xo
+
+[p8]                         # FILL
+kick   X..X .... X... ....
+snare  ........ ........ xoxoxoxo xoXXXXXX
+hhc    ..Xo XoXo .... ....
+hho    X... .... .... ....
+hitom  .... ..XX .... ....
+lotom  .... .... .... ...X

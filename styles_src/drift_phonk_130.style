@@ -1,0 +1,70 @@
+name: DRIFT PHONK 130
+# Club & bass. Tempo sugerido: 130 BPM.
+# Drift phonk: cencerro melodico (hho), 808 e palmas.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    XxXx XxXx XxXx XxXx
+hho    X..X ..X. X..X ..X.
+
+[p1]
+kick   X... .... .... ....
+clap   .... X... .... X...
+hhc    XxXx XxXx XxXx XxXx
+hho    X..X ..X. X.X. X...
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X..X ..Xx ..X. .X..
+clap   ...o X... ...o X...
+hhc    XXXX XXXX XXXX XXXX
+hho    X..X ..X. X..X ..X.
+lotom  X..X ..X. ..X. .X..
+
+[p3]
+kick   X..X ..Xx ..X. XX..
+clap   ...o X... ...o X...
+hhc    XXXX XXXX XXXX XXXX
+hho    X..X ..X. X.X. X.X.
+hitom  .... .... .... ..X.
+lotom  X..X ..X. ..X. X...
+
+[p4]                         # BASE
+kick   X..X ..X. ..X. .X..
+clap   .... X... .... X...
+hhc    XxXx XxXx XxXx XxXx
+hho    X..X ..X. X..X ..X.
+lotom  X..X ..X. ..X. .X..
+
+[p5]
+kick   X..X ..X. ..X. X...
+clap   .... X... .... X...
+hhc    XxXx XxXx XxXx XxXx
+hho    X..X ..X. X.X. X...
+lotom  X..X ..X. ..X. X...
+
+[p6]                         # VARIACION
+kick   X..X ..X. ..X. .X..
+clap   .... X... .... X...
+hhc    Xx.x XxXx Xx.x XxXx
+hho    X.XX ..X. X.XX ..X.
+hitom  .... .... .... .X..
+lotom  X..X ..X. ..X. ....
+
+[p7]
+kick   X..X ..X. ..X. X...
+clap   .... X... .... X...
+hhc    Xx.x XxXx XxXx Xx.x
+hho    X.XX ..X. X.X. X.X.
+hitom  .... .... .... .x..
+lotom  X..X ..X. ..X. X.Xo
+
+[p8]                         # FILL
+kick   X... .... .... ....
+snare  .... .... .... ooxX
+clap   .... .... .... ...X
+hhc    X.X. X.X. X.X. ....
+hho    X... .... .... ....
+hitom  .... .... Xx.. ....
+lotom  .... .... ..Xx ....

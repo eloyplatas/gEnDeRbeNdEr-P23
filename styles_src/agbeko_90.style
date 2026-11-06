@@ -1,0 +1,75 @@
+name: AGBEKO 90
+meter: 6/8
+# African traditional. Tempo sugerido: 90 BPM (negras; compas 6/8).
+# Agbeko (Ewe, Ghana), 12/8: gankogui coa campa estandar e axatse.
+# Voces: hhc=gankogui · hho=axatse · kick/lotom=sogo · snare=kidi.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X.XX .X.X.X
+hho    ..X..X ..X..X
+
+[p1]
+kick   X..... ......
+snare  ..X.X. ..XXX.
+hhc    X.X.XX .X.X.X
+hho    ..X..X ..X..X
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+snare  .oXoX. .oXoX.
+hhc    X-X-XX oXoXoX
+hho    ..X..X ..X.XX
+hitom  ...X.. ...X..
+lotom  X..... X..X..
+
+[p3]
+kick   X....x X..X..
+snare  .oXoX. .oXXX.
+hhc    X-X-XX oXoXoX
+hho    ..X..X ..X.XX
+hitom  ...X.. ...XX.
+lotom  X..... X..X..
+
+[p4]                         # BASE
+kick   X..... X.....
+snare  ..X.X. ..X.X.
+hhc    X.X.XX .X.X.X
+hho    ..X..X ..X..X
+hitom  ...X.. ...X..
+lotom  X..... X..X..
+
+[p5]
+kick   X..... X.....
+snare  ..X.X. ..XXX.
+hhc    X.X.XX .X.X.X
+hho    ..X..X ..X..X
+hitom  ...X.. ...X..
+lotom  X..... X..X..
+
+[p6]                         # VARIACION
+kick   X..... X.....
+snare  ..X.X. ..X.X.
+hhc    X.X..X .X.X.X
+hho    ..X.XX ..X..X
+hitom  ...X.. ...X..
+lotom  X..... X..X..
+
+[p7]
+kick   X..... X.....
+snare  ..X.X. ..XXX.
+hhc    X.X..X .X.X.X
+hho    ..X.XX ..X..X
+hitom  ...X.. ..XX..
+lotom  X..... X..XXo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.X.XX .X.X.X
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

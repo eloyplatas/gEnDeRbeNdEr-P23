@@ -1,0 +1,64 @@
+name: TEXAS SHUFFLE 130
+# Jazz & blues. Tempo sugerido: 130 BPM.
+# Texas shuffle: shuffle dobre na caixa (as dúas mans).
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X... X... X... X...
+
+[p1]
+kick   X... .... .... ....
+snare  X... X... X... X..X
+hhc    X... X... X... X...
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X... ...x X... ....
+snare  X....xo. X....xo. X....xo. X....x..
+hhc    X-o- X-o- X-o- X-o-
+hho    .... .... .... ..X.
+lotom  X....X.. X....X.. X....X.. X....X..
+
+[p3]
+kick   X... ...x X... .X..
+snare  X....xo. X....xo. X....xo. X...oxX.
+hhc    X-o- X-o- X-o- X-o-
+hho    .... .... .... ..X.
+hitom  .... .... .... ..X.
+lotom  X....X.. X....X.. X....X.. X....X..
+
+[p4]                         # BASE
+kick   X... .... X... ....
+snare  X....x.. X....x.. X....x.. X....x..
+hhc    X... X... X... X...
+lotom  X....X.. X....X.. X....X.. X....X..
+
+[p5]
+kick   X... .... X... ....
+snare  X....x.. X....x.. X....x.. X....xX.
+hhc    X... X... X... X...
+lotom  X....X.. X....X.. X....X.. X....X..
+
+[p6]                         # VARIACION
+kick   X... .... X... ....
+snare  X....x.. X....x.. X....x.. X....x..
+hhc    X... X... X... X...
+hitom  ........ ........ .....X.. .....X..
+lotom  X....X.. X....X.. X....... X.......
+
+[p7]
+kick   X... .... X... ....
+snare  X....x.. X....x.. X....x.. X....xX.
+hhc    X... X... X... X...
+hitom  ........ ........ .....X.. ..x..X..
+lotom  X....X.. X....X.. X....... X...X.o.
+
+[p8]                         # FILL
+kick   X... .... .... ....
+snare  .... .... .... ooxX
+clap   .... .... .... ...X
+hhc    X.X. X.X. X.X. ....
+hho    X... .... .... ....
+hitom  .... .... Xx.. ....
+lotom  .... .... ..Xx ....

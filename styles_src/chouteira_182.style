@@ -1,0 +1,79 @@
+name: CHOUTEIRA 182
+meter: 6/8
+# Galicia. Tempo sugerido: 182 BPM (negras; compas 6/8).
+# Chouteira, 6/8 (interpretacion): golpes de bombo antes do pulso marcan os choutos.
+# Voces: kick=bombo · snare=tamboril/caixa · clap=pel da pandeireta, cunchas ou palmas
+# hhc=ferrenas (pandeireta) · hho=xiro/arrastre de ferrenas · lotom/hitom=baixo (ronco, bordon).
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X.X. X.X.X.
+
+[p1]
+kick   X..... ......
+snare  X..... X...XX
+clap   ....X. ....X.
+hhc    X.X.X. X.X.X.
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X...Xx X...X.
+snare  X..x.o X..x..
+clap   ...oX. ...oX.
+hhc    X-X-X- X-X-X-
+hho    ...... ....X.
+hitom  ....-. ....-.
+lotom  X..... X.....
+
+[p3]
+kick   X...Xx X..XX.
+snare  X..x.o X.xxXX
+clap   ...oX. ...oX.
+hhc    X-X-X- X-X-X-
+hho    ...... ....X.
+hitom  ....-. ..X...
+lotom  X..... X...X.
+
+[p4]                         # BASE
+kick   X...X. X...X.
+snare  X..x.. X..x..
+clap   ....X. ....X.
+hhc    X.X.X. X.X.X.
+hitom  ....-. ....-.
+lotom  X..... X.....
+
+[p5]
+kick   X...X. X...X.
+snare  X..x.. X.xxXX
+clap   ....X. ....X.
+hhc    X.X.X. X.X.X.
+hitom  ....-. ..X...
+lotom  X..... X...X.
+
+[p6]                         # VARIACION
+kick   X...X. X...X.
+snare  ....X. ....X.
+clap   X..x.. X..x..
+hhc    X.X... X.X...
+hho    ....X. ....X.
+hitom  ....-. ....-.
+lotom  X..... X.....
+
+[p7]
+kick   X...X. X...X.
+snare  ....X. ....X.
+clap   X..x.. X.xxXX
+hhc    X.X... X.X...
+hho    ....X. ....X.
+hitom  ....-. ..Xx..
+lotom  X..... X...Xo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.X.X. X.X.X.
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

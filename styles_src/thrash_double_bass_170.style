@@ -1,0 +1,67 @@
+name: THRASH DOUBLE BASS 170
+# Metal. Tempo sugerido: 170 BPM.
+# Thrash: dobre bombo en semicorcheas e caixa no 2 e 4.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X. X.X. X.X. X.X.
+hho    X... .... .... ....
+
+[p1]
+kick   X... .... .... ....
+snare  .... X... .... X...
+hhc    X.X. X.X. X.X. X.X.
+hho    X... .... .... ....
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   XXXX XXXX XXXX XXXX
+snare  ...o X... ...o X...
+hhc    X-X- X-X- X-X- X-X-
+hho    X... .... .... ..X.
+lotom  X.X. X.X. X.X. X.X.
+
+[p3]
+kick   XXXX XXXX XXXX XXXX
+snare  ...o X... ...o X...
+hhc    X-X- X-X- X-X- X-X-
+hho    X... .... .... ..X.
+lotom  X.X. X.X. X.X. X.X.
+
+[p4]                         # BASE
+kick   XXXX XXXX XXXX XXXX
+snare  .... X... .... X...
+hhc    X.X. X.X. X.X. X.X.
+hho    X... .... .... ....
+lotom  X.X. X.X. X.X. X.X.
+
+[p5]
+kick   XXXX XXXX XXXX XXXX
+snare  .... X... .... X...
+hhc    X.X. X.X. X.X. X.X.
+hho    X... .... .... ....
+lotom  X.X. X.X. X.X. X.X.
+
+[p6]                         # VARIACION
+kick   XXXX XXXX XXXX XXXX
+snare  .... X... .... X...
+hhc    X... X... X... X...
+hho    X.X. ..X. ..X. ..X.
+lotom  X.X. X.X. X.X. X.X.
+
+[p7]
+kick   XXXX XXXX XXXX XXXX
+snare  .... X... .... X...
+hhc    X... X... X... X...
+hho    X.X. ..X. ..X. ..X.
+hitom  .... .... .... .x..
+lotom  X.X. X.X. X.X. X.Xo
+
+[p8]                         # FILL
+kick   X..X .... X... ....
+snare  ........ ........ xoxoxoxo xoXXXXXX
+hhc    ..Xo XoXo .... ....
+hho    X... .... .... ....
+hitom  .... ..XX .... ....
+lotom  .... .... .... ...X

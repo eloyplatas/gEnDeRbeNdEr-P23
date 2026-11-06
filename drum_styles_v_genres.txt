@@ -1,0 +1,316 @@
+Cumbia	CUMBIA COLOMBIANA 95.txt
+Cumbia	CUMBIA SONIDERA 92.txt
+Cumbia	CUMBIA VILLERA 98.txt
+Cumbia	CUMBIA DIGITAL 100.txt
+Cumbia	CUMBIA REBAJADA 72.txt
+Cumbia	CUMBIA PERUANA 100.txt
+Cumbia	CUMBIA TROPICAL 104.txt
+Cumbia	CUMBIA RAPIDITA 112.txt
+Footwork / juke	101 JUKE.txt
+Footwork / juke	Juke160.txt
+Reggaeton / dancehall	101 RAGATON.txt
+House & disco	Chicago.Jouse 125.txt
+House & disco	JetoHouse 135.txt
+House & disco	MIAMI BEIGE 135.txt
+House & disco	DEEP HOUSE 120.txt
+House & disco	ACID HOUSE 124.txt
+House & disco	GARAGE HOUSE 122.txt
+House & disco	FRENCH FILTER HOUSE 124.txt
+House & disco	DISCO 118.txt
+House & disco	ITALO DISCO 120.txt
+House & disco	NEW BEAT 110.txt
+House & disco	PROGRESSIVE HOUSE 124.txt
+House & disco	UK FUNKY 130.txt
+House & disco	SPEED GARAGE 132.txt
+House & disco	BASSLINE 136.txt
+House & disco	MICROHOUSE 122.txt
+UK garage / 2-step	Two-stepppo.txt
+UK garage / 2-step	uk_fungui.txt
+UK garage / 2-step	uk_garbage.txt
+Grime	GRIME140.txt
+Grime	Grimer140.txt
+Dubstep	DUBSTEP140.txt
+Dubstep	DubSteppo.txt
+Dubstep	DUBSTEP HALFTIME 140.txt
+Dubstep	DUBSTEP RIDDIM 140.txt
+Dubstep	DUBSTEP TRIBAL 140.txt
+Dubstep	BROSTEP 150.txt
+Breaks, jungle & drum & bass	drumbass.txt
+Breaks, jungle & drum & bass	DurumBass160.txt
+Breaks, jungle & drum & bass	AMEN JUNGLE 165.txt
+Breaks, jungle & drum & bass	BREAKBEAT HARDCORE 150.txt
+Breaks, jungle & drum & bass	JUMP UP 174.txt
+Breaks, jungle & drum & bass	NEUROFUNK 172.txt
+Breaks, jungle & drum & bass	LIQUID DNB 172.txt
+Breaks, jungle & drum & bass	HALFTIME 170.txt
+Breaks, jungle & drum & bass	NU SKOOL BREAKS 132.txt
+Breaks, jungle & drum & bass	BIG BEAT 115.txt
+Techno	techAXX.txt
+Techno	TekkBooooring.txt
+Techno	TekkChungo.txt
+Techno	TekkThump.txt
+Techno	DETROIT TECHNO 128.txt
+Techno	MINIMAL TECHNO 126.txt
+Techno	DUB TECHNO 120.txt
+Techno	ACID TECHNO 135.txt
+Techno	HARD TECHNO 150.txt
+Techno	RAVE TECHNO 145.txt
+Techno	HYPNOTIC TECHNO 130.txt
+Techno	TECH HOUSE 125.txt
+R&B / trap	RB.txt
+R&B / trap	WCOAST R&B 110.txt
+R&B / trap	VAPORTRAP.txt
+Gqom	GQOM.txt
+Galicia	MUINEIRA NOVA 180 (6-8).txt
+Galicia	MUINEIRA VELLA 172 (6-8).txt
+Galicia	RIBEIRANA 186 (6-8).txt
+Galicia	MUINEIRA GOLPE 132 (6-8).txt
+Galicia	CARBALLESA 176 (6-8).txt
+Galicia	MUINEIRA REDONDA 178 (6-8).txt
+Galicia	CHOUTEIRA 182 (6-8).txt
+Galicia	CONTRAPASO 168 (6-8).txt
+Galicia	XOTA 168 (3-4).txt
+Galicia	XOTA DE PANDEIRETA 160 (3-4).txt
+Galicia	FOLIADA 150 (3-4).txt
+Galicia	ALBORADA 100.txt
+Galicia	ALBORADA 96 (3-4).txt
+Galicia	PASODOBRE 116.txt
+Galicia	POLCA 120.txt
+Galicia	MAZURCA 132 (3-4).txt
+Galicia	VALSE 160 (3-4).txt
+Galicia	XOTIS 104.txt
+Galicia	PASARRUAS 108.txt
+Galicia	MUINEIRA TECHNO 180 (6-8).txt
+Galicia	PANDEIRADA BASS 165 (6-8).txt
+Galicia	XOTA DUB 82 (3-4).txt
+Galicia	ALALA ESPAZO 60.txt
+Galicia	MUINEIRA DE ROMARIA 186 (6-8).txt
+Iberia & Mediterranean	SEVILLANAS 180 (3-4).txt
+Iberia & Mediterranean	RUMBA FLAMENCA 104.txt
+Iberia & Mediterranean	TANGOS FLAMENCOS 110.txt
+Iberia & Mediterranean	FANDANGO DE HUELVA 170 (3-4).txt
+Iberia & Mediterranean	TARANTELLA 190 (6-8).txt
+Iberia & Mediterranean	DABKE 125.txt
+Iberia & Mediterranean	MAQSUM 110.txt
+Iberia & Mediterranean	BALADI 100.txt
+Iberia & Mediterranean	MALFUF 140.txt
+Iberia & Mediterranean	AYOUB 120.txt
+Iberia & Mediterranean	GNAWA 120 (6-8).txt
+Iberia & Mediterranean	RUCENICA 140 (7-8).txt
+Iberia & Mediterranean	KALAMATIANOS 130 (7-8).txt
+Iberia & Mediterranean	PAIDUSHKO 160 (5-8).txt
+Iberia & Mediterranean	RUMBA CATALANA 110.txt
+Africa	AFROBEAT 112.txt
+Africa	HIGHLIFE 128.txt
+Africa	SOUKOUS 140.txt
+Africa	MBALAX 125.txt
+Africa	KUDURO 140.txt
+Africa	KWAITO 112.txt
+Africa	AMAPIANO 113.txt
+Africa	AFRO HOUSE 122.txt
+Africa	SHANGAAN ELECTRO 186.txt
+Africa	SINGELI 210.txt
+Africa	AFROBEATS 104.txt
+Africa	RUMBA CONGOLESA 120.txt
+Africa	AFROBEAT FELA 120.txt
+Africa	JUJU 110.txt
+Latin America & Caribbean	SALSA 95.txt
+Latin America & Caribbean	GUAGUANCO 105.txt
+Latin America & Caribbean	BOMBA SICA 115.txt
+Latin America & Caribbean	PLENA 120.txt
+Latin America & Caribbean	MERENGUE 130.txt
+Latin America & Caribbean	SAMBA 100.txt
+Latin America & Caribbean	BOSSA NOVA 130.txt
+Latin America & Caribbean	BAIAO 95.txt
+Latin America & Caribbean	MARACATU 90.txt
+Latin America & Caribbean	AFOXE 100.txt
+Latin America & Caribbean	FUNK CARIOCA 130.txt
+Latin America & Caribbean	CANDOMBE 110.txt
+Latin America & Caribbean	TANGO 120.txt
+Latin America & Caribbean	MILONGA 110.txt
+Latin America & Caribbean	REGGAE ONE DROP 76.txt
+Latin America & Caribbean	REGGAE STEPPERS 76.txt
+Latin America & Caribbean	DANCEHALL 100.txt
+Latin America & Caribbean	SOCA 155.txt
+Latin America & Caribbean	DEMBOW 115.txt
+Latin America & Caribbean	MOOMBAHTON 108.txt
+Latin America & Caribbean	REGGAETON CLASICO 95.txt
+Latin America & Caribbean	REGGAETON PERREO 100.txt
+Latin America & Caribbean	REGGAETON MODERNO 90.txt
+Latin America & Caribbean	RUMBA YAMBU 90.txt
+Latin America & Caribbean	RUMBA COLUMBIA 115 (6-8).txt
+Latin America & Caribbean	TANGO CANYENGUE 110.txt
+Latin America & Caribbean	TANGO NUEVO 115.txt
+Latin America & Caribbean	TANGO ELECTRONICO 115.txt
+Latin America & Caribbean	TANGO VALS 165 (3-4).txt
+Latin America & Caribbean	VALS PERUANO 150 (3-4).txt
+Latin America & Caribbean	SALSA DURA 105.txt
+Latin America & Caribbean	SALSA ROMANTICA 92.txt
+Latin America & Caribbean	SON CUBANO 100.txt
+Latin America & Caribbean	MAMBO 110.txt
+Latin America & Caribbean	CHA CHA CHA 120.txt
+Latin America & Caribbean	TIMBA 105.txt
+Asia & Middle East	DANGDUT 140.txt
+Asia & Middle East	KEHERWA 100.txt
+Asia & Middle East	TEENTAAL 120.txt
+Asia & Middle East	DADRA 100 (6-8).txt
+Asia & Middle East	BHANGRA 100.txt
+Trance & hard dance	TRANCE 138.txt
+Trance & hard dance	PSYTRANCE 145.txt
+Trance & hard dance	DARK PSY 150.txt
+Trance & hard dance	BIG ROOM 128.txt
+Trance & hard dance	HARDSTYLE 150.txt
+Trance & hard dance	GABBER 180.txt
+Trance & hard dance	SPEEDCORE 230.txt
+Club & bass	MIAMI BASS 128.txt
+Club & bass	BALTIMORE CLUB 130.txt
+Club & bass	JERSEY CLUB 140.txt
+Club & bass	BALLROOM VOGUE 130.txt
+Club & bass	ELECTRO FUNK 110.txt
+Club & bass	SYNTHWAVE 110.txt
+Club & bass	HYPERPOP 160.txt
+Club & bass	DECONSTRUCTED CLUB 130.txt
+Club & bass	WITCH HOUSE 70.txt
+Club & bass	DRIFT PHONK 130.txt
+Hip hop	BOOM BAP 90.txt
+Hip hop	GOLDEN ERA 95.txt
+Hip hop	DILLA SWING 88.txt
+Hip hop	LO FI HIP HOP 78.txt
+Hip hop	G FUNK 94.txt
+Hip hop	CRUNK 76.txt
+Hip hop	UK DRILL 142.txt
+Hip hop	NY DRILL 142.txt
+Hip hop	TRAP 140.txt
+Hip hop	JAZZ HOP 90.txt
+Hip hop	FUNKY DRUMMER 100.txt
+Hip hop	ABSTRACT HIP HOP 86.txt
+Hip hop	OLD SCHOOL RAP 100.txt
+Hip hop	NEW ORLEANS BOUNCE 100.txt
+Hip hop	WEST COAST RAP 92.txt
+Hip hop	TRAP SOUL 65.txt
+Hip hop	TRAP LATINO 90.txt
+Hip hop	PLUGG 150.txt
+Hip hop	ATLANTA TRAP 135.txt
+Hip hop	CHICAGO DRILL 140.txt
+Trip hop & downtempo	BRISTOL 88.txt
+Trip hop & downtempo	TRIP HOP CINEMATIC 76.txt
+Trip hop & downtempo	DARK TRIP HOP 72.txt
+Trip hop & downtempo	TRIP HOP DUB 80.txt
+Trip hop & downtempo	ILLBIENT 85.txt
+Trip hop & downtempo	DOWNTEMPO BREAKS 95.txt
+Industrial & dark	EBM 125.txt
+Industrial & dark	INDUSTRIAL METAL 110.txt
+Industrial & dark	METAL PERCUSSION 112.txt
+Industrial & dark	RHYTHMIC NOISE 150.txt
+Industrial & dark	POST PUNK 140.txt
+Industrial & dark	DEATH INDUSTRIAL 70.txt
+Breakcore & extreme	BREAKCORE AMEN 180.txt
+Breakcore & extreme	RAGGA BREAKCORE 175.txt
+Breakcore & extreme	SNARECORE 170 (7-8).txt
+Breakcore & extreme	DRILL N BASS 180.txt
+IDM & experimental	IDM GLITCH 110.txt
+IDM & experimental	BRAINDANCE 160.txt
+IDM & experimental	ALGORITMICA 98.txt
+IDM & experimental	WONKY 90.txt
+IDM & experimental	GLITCH HOP 105.txt
+IDM & experimental	MOTORIK 135.txt
+IDM & experimental	KRAUT FUNK 115.txt
+IDM & experimental	POLIRRITMO 3 CONTRA 4 110.txt
+IDM & experimental	POLIRRITMO 5 CONTRA 4 100.txt
+IDM & experimental	STOCHASTIC 100.txt
+IDM & experimental	NOISE BLASTS 140.txt
+IDM & experimental	CLAPPING MUSIC 160 (6-8).txt
+IDM & experimental	EUCLIDES 120.txt
+Ambient	AMBIENT PULSE 70.txt
+Ambient	AMBIENT TECHNO 115.txt
+Ambient	AMBIENT DUB 70.txt
+Ambient	DRONE PULSE 60.txt
+Reggae, dub & rocksteady	SKA 160.txt
+Reggae, dub & rocksteady	ROCKSTEADY 80.txt
+Reggae, dub & rocksteady	ROOTS REGGAE 72.txt
+Reggae, dub & rocksteady	REGGAE ROCKERS 76.txt
+Reggae, dub & rocksteady	REGGAE FLYERS 78.txt
+Reggae, dub & rocksteady	NYABINGHI 70.txt
+Reggae, dub & rocksteady	DUB 70.txt
+Reggae, dub & rocksteady	UK DUB STEPPERS 140.txt
+Reggae, dub & rocksteady	LOVERS ROCK 74.txt
+Reggae, dub & rocksteady	DANCEHALL DIGITAL 95.txt
+Reggae, dub & rocksteady	DANCEHALL DIWALI 98.txt
+Jazz & blues	SWING JAZZ 160.txt
+Jazz & blues	BEBOP 240.txt
+Jazz & blues	JAZZ BALLAD BRUSHES 70.txt
+Jazz & blues	JAZZ WALTZ 150 (3-4).txt
+Jazz & blues	HARD BOP 180.txt
+Jazz & blues	SONGO 110.txt
+Jazz & blues	AFRO CUBAN BEMBE 150 (6-8).txt
+Jazz & blues	MODAL JAZZ 150 (6-8).txt
+Jazz & blues	JAZZ FUNK 100.txt
+Jazz & blues	FREE JAZZ 120.txt
+Jazz & blues	COOL JAZZ 130.txt
+Jazz & blues	SECOND LINE 100.txt
+Jazz & blues	BLUES SHUFFLE 120.txt
+Jazz & blues	SLOW BLUES 82 (6-8).txt
+Jazz & blues	CHICAGO BLUES 110.txt
+Jazz & blues	TEXAS SHUFFLE 130.txt
+Jazz & blues	BOOGIE WOOGIE 160.txt
+Jazz & blues	DELTA BLUES 90.txt
+Soul & funk	MOTOWN SOUL 120.txt
+Soul & funk	NORTHERN SOUL 125.txt
+Soul & funk	NEO SOUL 85.txt
+Soul & funk	SOUL BALLAD 90 (6-8).txt
+Soul & funk	FUNK JB 108.txt
+Soul & funk	PHILLY SOUL 115.txt
+Metal	BLACK METAL BLAST 220.txt
+Metal	BLACK METAL SKANK 180.txt
+Metal	ATMOSPHERIC BLACK 150.txt
+Metal	DOOM METAL 60.txt
+Metal	FUNERAL DOOM 40.txt
+Metal	SLUDGE 75.txt
+Metal	STONER ROCK 95.txt
+Metal	TECH DEATH BLAST 240.txt
+Metal	TECH DEATH 170 (7-8).txt
+Metal	DEATH METAL GROOVE 120.txt
+Metal	THRASH SKANK 200.txt
+Metal	THRASH GALLOP 180.txt
+Metal	THRASH DOUBLE BASS 170.txt
+Flamenco	SOLEA 90 (6-8).txt
+Flamenco	ALEGRIAS 130 (6-8).txt
+Flamenco	BULERIAS 120 (6-8).txt
+Flamenco	SOLEA POR BULERIAS 100 (6-8).txt
+Flamenco	SIGUIRIYA 75 (6-8).txt
+Flamenco	GUAJIRA 110 (6-8).txt
+Flamenco	TANGUILLOS 170 (6-8).txt
+Flamenco	TIENTOS 70.txt
+Flamenco	FARRUCA 100.txt
+European folk	VALS VIENES 180 (3-4).txt
+European folk	VALS LENTO 90 (3-4).txt
+European folk	VALS MUSETTE 160 (3-4).txt
+European folk	IRISH JIG 180 (6-8).txt
+European folk	IRISH REEL 200.txt
+European folk	IRISH HORNPIPE 150.txt
+European folk	IRISH SLIDE 190 (6-8).txt
+European folk	IRISH POLKA 130.txt
+European folk	POLSKA 120 (3-4).txt
+European folk	HUMPPA 130.txt
+European folk	HORA 136.txt
+European folk	AN DRO 120.txt
+European folk	JOTA ARAGONESA 200 (3-4).txt
+European folk	SARDANA 110 (6-8).txt
+European folk	STRATHSPEY 116.txt
+European folk	FADO 70.txt
+European folk	KOLO 140.txt
+European folk	LANDLER 120 (3-4).txt
+African traditional	KUKU 120.txt
+African traditional	DJOLE 125.txt
+African traditional	KASSA 115.txt
+African traditional	SOLI 90 (6-8).txt
+African traditional	AGBEKO 90 (6-8).txt
+African traditional	GAHU 120.txt
+African traditional	KPANLOGO 120.txt
+African traditional	BOBOBO 125.txt
+African traditional	ADOWA 100 (6-8).txt
+African traditional	MBIRA SHONA 120 (6-8).txt
+African traditional	BIKUTSI 150 (6-8).txt
+Other	ESTAIL.txt
+Other	TEST2.txt
+Other	ZZZZ BLACK.txt

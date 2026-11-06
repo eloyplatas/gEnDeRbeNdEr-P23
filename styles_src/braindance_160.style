@@ -1,0 +1,65 @@
+name: BRAINDANCE 160
+# IDM & experimental. Tempo sugerido: 160 BPM.
+# Braindance (Rephlex): bombos desprazados e redobres de caixa en fusas.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    XXXX XXXX XXXX XXXX
+
+[p1]
+kick   X... .... .... ....
+snare  ........ X.XX.X.. ........ X.XXXXXX
+hhc    XXXX XXXX XXXX XXXX
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X..X .X.x X... XX..
+snare  ......o. Xo.X.X.. ......o. X.ooXXXX
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+lotom  X..X .... .X.. X...
+
+[p3]
+kick   X..X ..Xx X..X XX..
+snare  ......o. XoXX.X.. ......o. XoXXXXXX
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+hitom  .... .... .... ..X.
+lotom  X..X ..X. .... X...
+
+[p4]                         # BASE
+kick   X..X .X.. X... XX..
+snare  ........ X..X.X.. ........ X...XXXX
+hhc    XXXX XXXX XXXX XXXX
+lotom  X..X .... .X.. X...
+
+[p5]
+kick   X..X ..X. X..X X...
+snare  ........ X.XX.X.. ........ X.XXXXXX
+hhc    XXXX XXXX XXXX XXXX
+lotom  X..X ..X. .... X...
+
+[p6]                         # VARIACION
+kick   X..X .X.. X... XX..
+snare  ........ X..X.X.. ........ X...XXXX
+hhc    XX.X XX.X XX.X XX.X
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .X.. ....
+lotom  X..X .... .... X...
+
+[p7]
+kick   X..X ..X. X..X X...
+snare  ........ X.XX.X.. ........ X.XXXXXX
+hhc    XX.X XX.X XX.X XX.X
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .... .x..
+lotom  X..X ..X. .... X.Xo
+
+[p8]                         # FILL
+kick   X..X .... X... ....
+snare  ........ ........ xoxoxoxo xoXXXXXX
+hhc    ..Xo XoXo .... ....
+hho    X... .... .... ....
+hitom  .... ..XX .... ....
+lotom  .... .... .... ...X

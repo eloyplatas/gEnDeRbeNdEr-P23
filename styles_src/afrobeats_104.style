@@ -1,0 +1,72 @@
+name: AFROBEATS 104
+# Africa. Tempo sugerido: 104 BPM.
+# Afrobeats (Nixeria): bombo sincopado, palmas no 2 e 4, aros cruzados e shaker.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    XxxX XxxX XxxX XxxX
+
+[p1]
+kick   X... .... .... ....
+snare  ...X ..X. ...X ..X.
+clap   .... X... .... X...
+hhc    XxxX XxxX XxxX XxxX
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X..X ..Xx ..X. .X..
+snare  ..oX .oX. .... oX..
+clap   ...o X... ...o X...
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+lotom  X..X ..X. ..X. ....
+
+[p3]
+kick   X..X ..Xx ..X. .X..
+snare  ..oX .oX. ..oX .oX.
+clap   ...o X... ...o X...
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+hitom  .... .... .... ..X.
+lotom  X..X ..X. ..X. .X..
+
+[p4]                         # BASE
+kick   X..X ..X. ..X. .X..
+snare  ...X ..X. .... .X..
+clap   .... X... .... X...
+hhc    XxxX XxxX XxxX XxxX
+lotom  X..X ..X. ..X. ....
+
+[p5]
+kick   X..X ..X. ..X. ....
+snare  ...X ..X. ...X ..X.
+clap   .... X... .... X...
+hhc    XxxX XxxX XxxX XxxX
+lotom  X..X ..X. ..X. .X..
+
+[p6]                         # VARIACION
+kick   X..X ..X. ..X. .X..
+snare  .... X... .... X...
+clap   ...X ..X. .... .X..
+hhc    Xx.X Xx.X Xx.X Xx.X
+hho    ..x. ..x. ..x. ..x.
+lotom  X..X ..X. ..X. ....
+
+[p7]
+kick   X..X ..X. ..X. ....
+snare  .... X... .... X...
+clap   ...X ..X. ...X ..X.
+hhc    Xx.X Xx.X Xx.X Xx.X
+hho    ..x. ..x. ..x. ..x.
+hitom  .... .... .... XX..
+lotom  X..X ..X. ..X. ..Xo
+
+[p8]                         # FILL
+kick   X... .... .... ....
+snare  .... .... .... ooxX
+clap   .... .... .... ...X
+hhc    X.X. X.X. X.X. ....
+hho    X... .... .... ....
+hitom  .... .... Xx.. ....
+lotom  .... .... ..Xx ....

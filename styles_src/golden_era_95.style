@@ -1,0 +1,69 @@
+name: GOLDEN ERA 95
+# Hip hop. Tempo sugerido: 95 BPM.
+# Hip hop golden era: break con fantasmas e hat aberto.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X. X.X. X.X. X.X.
+hho    .... .... .... ..X.
+
+[p1]
+kick   X... .... .... ....
+snare  .... X... .... X...
+hhc    X.X. X.X. X.X. X.X.
+hho    .... .... .... ..X.
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X... ...x ..X. ....
+snare  ...o X..o ...o X..o
+hhc    X-X- X-X- X-X- X-X-
+hho    .... .... .... ..X.
+lotom  X... .... ..X. ....
+
+[p3]
+kick   X... ...x X.X. .X..
+snare  ...o X..o ...o X...
+hhc    X-X- X-X- X-X- X-X-
+hho    .... .... .... ..X.
+hitom  .... .... .... ..X.
+lotom  X... .... X.X. ....
+
+[p4]                         # BASE
+kick   X... .... ..X. ....
+snare  .... X..o .... X..o
+hhc    X.X. X.X. X.X. X.X.
+hho    .... .... .... ..X.
+lotom  X... .... ..X. ....
+
+[p5]
+kick   X... .... X.X. ....
+snare  .... X..o .... X...
+hhc    X.X. X.X. X.X. X.X.
+hho    .... .... .... ..X.
+lotom  X... .... X.X. ....
+
+[p6]                         # VARIACION
+kick   X... .... ..X. ....
+snare  .... X..o .... X..o
+hhc    X... X... X... X.X.
+hho    ..X. ..X. ..X. ..X.
+lotom  X... .... ..X. ....
+
+[p7]
+kick   X... .... X.X. ....
+snare  .... X..o .... X...
+hhc    X... X... X... X.X.
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .... Xx..
+lotom  X... .... X.X. ..Xo
+
+[p8]                         # FILL
+kick   X... .... .... ....
+snare  .... .... .... ooxX
+clap   .... .... .... ...X
+hhc    X.X. X.X. X.X. ....
+hho    X... .... .... ....
+hitom  .... .... Xx.. ....
+lotom  .... .... ..Xx ....

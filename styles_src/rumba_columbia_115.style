@@ -1,0 +1,70 @@
+name: RUMBA COLUMBIA 115
+meter: 6/8
+# Latin America & Caribbean. Tempo sugerido: 115 BPM (negras; compas 6/8).
+# Rumba columbia (Cuba), 6/8: campa de 12 pulsos e tumbadoras.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X.XX .X.X.X
+
+[p1]
+snare  ...... X..X..
+clap   X..X.. X..X..
+hhc    X.X.XX .X.X.X
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+snare  .....o X.....
+clap   X.oX.o X.oX..
+hhc    X-X-XX oXoXoX
+hho    ...... ....X.
+hitom  ...X.. ...X..
+lotom  X..... X.....
+
+[p3]
+snare  .....o X.oX..
+clap   X.oX.o X.oX..
+hhc    X-X-XX oXoXoX
+hho    ...... ....X.
+hitom  ...X.. .X.XX.
+lotom  X..... X.....
+
+[p4]                         # BASE
+snare  ...... X.....
+clap   X..X.. X..X..
+hhc    X.X.XX .X.X.X
+hitom  ...X.. ...X..
+lotom  X..... X.....
+
+[p5]
+snare  ...... X..X..
+clap   X..X.. X..X..
+hhc    X.X.XX .X.X.X
+hitom  ...X.. .X.X..
+lotom  X..... X.....
+
+[p6]                         # VARIACION
+snare  X..X.. X..X..
+clap   ...... X.....
+hhc    X.X..X .X.X.X
+hho    ....X. ......
+hitom  ...X.. ...X..
+lotom  X..... X.....
+
+[p7]
+snare  X..X.. X..X..
+clap   ...... X..X..
+hhc    X.X..X .X.X.X
+hho    ....X. ......
+hitom  ...X.. .XXX..
+lotom  X..... X...Xo
+
+[p8]                         # FILL
+kick   X..... ......
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.X.X. ......
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

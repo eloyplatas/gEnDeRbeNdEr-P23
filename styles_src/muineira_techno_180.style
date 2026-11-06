@@ -1,0 +1,84 @@
+name: MUINEIRA TECHNO 180
+meter: 6/8
+# Galicia. Tempo sugerido: 180 BPM (negras; compas 6/8).
+# Fusion: muineira en 6/8 con bombo a negra con punto (catro no chan ternario),
+# baixo rodando a contratempo como no psytrance e caixa con celula de muineira.
+# Voces: kick=bombo · snare=tamboril/caixa · clap=pel da pandeireta, cunchas ou palmas
+# hhc=ferrenas (pandeireta) · hho=xiro/arrastre de ferrenas · lotom/hitom=baixo (ronco, bordon).
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    ..X.X. ..X.X.
+hho    ....X. ....X.
+
+[p1]
+kick   X..... ......
+snare  ...... ....XX
+clap   ...... X.....
+hhc    ..X.X. ..X.X.
+hho    ....X. ....X.
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+snare  ...... ....xo
+clap   .....o X.....
+hhc    o-X-X- o-X-X-
+hho    ....X. ....X.
+hitom  ....-. ....-.
+lotom  ..X.X. ..X.X.
+
+[p3]
+kick   X....x X..X..
+snare  ...... o.xoXX
+clap   .....o X.....
+hhc    o-X-X- o-X-X-
+hho    ....X. ....X.
+hitom  ....-. ....x.
+lotom  ..X.X. ..X.X.
+
+[p4]                         # BASE
+kick   X..... X.....
+snare  ...... ....xo
+clap   ...... X.....
+hhc    ..X.X. ..X.X.
+hho    ....X. ....X.
+hitom  ....-. ....-.
+lotom  ..X.X. ..X.X.
+
+[p5]
+kick   X..... X.....
+snare  ...... o.xoXX
+clap   ...... X.....
+hhc    ..X.X. ..X.X.
+hho    ....X. ....X.
+hitom  ....-. ....x.
+lotom  ..X.X. ..X.X.
+
+[p6]                         # VARIACION
+kick   X..... X.....
+snare  ...... X.....
+clap   ...... ....xo
+hhc    ..X.X. ..X.X.
+hho    ....X. ....X.
+hitom  ....-. ....-.
+lotom  ..X.X. ..X.X.
+
+[p7]
+kick   X..... X.....
+snare  ...... X.....
+clap   ...... o.xoXX
+hhc    ..X.X. ..X.X.
+hho    ....X. ....X.
+hitom  ....-. ...xx.
+lotom  ..X.X. ..X.Xo
+
+[p8]                         # FILL
+kick   X..... ......
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.X.X. ......
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

@@ -1,0 +1,79 @@
+name: MUINEIRA NOVA 180
+meter: 6/8
+# Galicia. Tempo sugerido: 180 BPM (negras; compas 6/8).
+# Muineira nova (punteada), 6/8: acento na primeira corchea de cada pulso.
+# Bombo nos pulsos (negra con punto = 120), tamboril coa celula corchea con punto-semicorchea-corchea.
+# Voces: kick=bombo · snare=tamboril/caixa · clap=pel da pandeireta, cunchas ou palmas
+# hhc=ferrenas (pandeireta) · hho=xiro/arrastre de ferrenas · lotom/hitom=baixo (ronco, bordon).
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.x.x. X.x.x.
+
+[p1]
+kick   X..... ......
+snare  X...X. X...X.
+clap   ...... ....X.
+hhc    X.x.x. X.x.x.
+hho    ...... ....x.
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+snare  X..xXo X..xX.
+hhc    X.X.x. X.X.x.
+hho    ...... ....X.
+hitom  ....X. ....x.
+lotom  X..... X.....
+
+[p3]
+kick   X....x X..Xo.
+snare  X..xXo X.oxXo
+clap   ...... ...oX.
+hhc    X.X.x. X.XxXx
+hho    ...... ....x.
+hitom  ....X. ..x.X.
+lotom  X..... X.....
+
+[p4]                         # BASE
+kick   X..... X.....
+snare  X..xX. X..xX.
+hhc    X.x.x. X.x.x.
+hitom  ....x. ....x.
+lotom  X..... X.....
+
+[p5]
+kick   X..... X...o.
+snare  X..xX. X.oxXo
+clap   ...... ....X.
+hhc    X.x.x. X.x.x.
+hho    ...... ....x.
+hitom  ....x. ....-.
+lotom  X..... X.....
+
+[p6]                         # VARIACION
+kick   X..... X.....
+snare  X..xX. X..xX.
+hhc    X.x... X.x...
+hho    ....x. ....x.
+hitom  ....x. ....x.
+lotom  X..... X.....
+
+[p7]
+kick   X..... X...o.
+snare  ...... ....X.
+clap   X..xX. X.oxXo
+hhc    X.x... X.x.x.
+hho    ....x. ....x.
+hitom  ....x. ..Xx-.
+lotom  X..... X....o
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.x.x. X.x.x.
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

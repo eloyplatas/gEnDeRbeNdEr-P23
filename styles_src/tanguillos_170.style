@@ -1,0 +1,73 @@
+name: TANGUILLOS 170
+meter: 6/8
+# Flamenco. Tempo sugerido: 170 BPM (negras; compas 6/8).
+# Tanguillos de Cadiz, 6/8: palmas en corcheas con acento binario (hemiola).
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X.X. X.X.X.
+
+[p1]
+kick   X..... ......
+snare  ...... ....X.
+clap   X...X. ..X...
+hhc    X.X.X. X.X.X.
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+snare  ..x... x...x.
+clap   X.xoX. xoX.x.
+hhc    X-X-X- X-X-X-
+hho    ...... ....X.
+lotom  X..... X.....
+
+[p3]
+kick   X....x X..XX.
+snare  ..x... x..oX.
+clap   X.xoX. xoX.x.
+hhc    X-X-X- X-X-X-
+hho    ...... ....X.
+hitom  ...... ....X.
+lotom  X..... X.....
+
+[p4]                         # BASE
+kick   X..... X.....
+snare  ..x... x...x.
+clap   X.x.X. x.X.x.
+hhc    X.X.X. X.X.X.
+lotom  X..... X.....
+
+[p5]
+kick   X..... X...X.
+snare  ..x... x...X.
+clap   X.x.X. x.X.x.
+hhc    X.X.X. X.X.X.
+lotom  X..... X.....
+
+[p6]                         # VARIACION
+kick   X..... X.....
+snare  X.x.X. x.X.x.
+clap   ..x... x...x.
+hhc    X.X... X.X...
+hho    ....X. ....X.
+lotom  X..... X.....
+
+[p7]
+kick   X..... X...X.
+snare  X.x.X. x.X.x.
+clap   ..x... x...X.
+hhc    X.X... X.X...
+hho    ....X. ....X.
+hitom  ...... ..Xx..
+lotom  X..... X...Xo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.X.X. X.X.X.
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

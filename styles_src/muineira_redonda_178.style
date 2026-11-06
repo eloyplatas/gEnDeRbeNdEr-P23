@@ -1,0 +1,81 @@
+name: MUINEIRA REDONDA 178
+meter: 6/8
+# Galicia. Tempo sugerido: 178 BPM (negras; compas 6/8).
+# Muineira redonda, 6/8: a roda bailase arredor dos musicos.
+# Voces: kick=bombo · snare=tamboril/caixa · clap=pel da pandeireta, cunchas ou palmas
+# hhc=ferrenas (pandeireta) · hho=xiro/arrastre de ferrenas · lotom/hitom=baixo (ronco, bordon).
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.x.x. X.x.x.
+
+[p1]
+kick   X..... ......
+snare  X...X. X.X.X.
+clap   X..... X.....
+hhc    X.x.x. X.x.x.
+hho    ...... x.....
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+snare  X.xoXo X.xoX.
+clap   X..... ......
+hhc    X-X-X- X-X-X-
+hho    ...... ....X.
+hitom  ..-... ....-.
+lotom  X...X. X...X.
+
+[p3]
+kick   X....x X..X..
+snare  X.xoXo XoXoXo
+clap   X....o X.....
+hhc    X-X-X- X-X-X-
+hho    ...... x...X.
+hitom  ..-... ..x...
+lotom  X...X. X...X.
+
+[p4]                         # BASE
+kick   X..... X.....
+snare  X.xoX. X.xoX.
+clap   X..... ......
+hhc    X.x.x. X.x.x.
+hitom  ..-... ....-.
+lotom  X...X. X...X.
+
+[p5]
+kick   X..... X.....
+snare  X.xoX. XoXoXo
+clap   X..... X.....
+hhc    X.x.x. X.x.x.
+hho    ...... x.....
+hitom  ..-... ..x...
+lotom  X...X. X...X.
+
+[p6]                         # VARIACION
+kick   X..... X.....
+snare  X..... ......
+clap   X.xoX. X.xoX.
+hhc    X.x... X.x...
+hho    ....x. ....x.
+hitom  ..-... ....-.
+lotom  X...X. X...X.
+
+[p7]
+kick   X..... X.....
+snare  X..... X.....
+clap   X.xoX. XoXoXo
+hhc    X.x... X.x...
+hho    ....x. x...x.
+hitom  ..-... ..xx..
+lotom  X...X. X...Xo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.x.x. X.x.x.
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

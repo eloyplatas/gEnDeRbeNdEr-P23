@@ -1,0 +1,80 @@
+name: RIBEIRANA 186
+meter: 6/8
+# Galicia. Tempo sugerido: 186 BPM (negras; compas 6/8).
+# Ribeirana (muineira vella), 6/8: sempre cantada; palmada ou patada ao final de cada punto.
+# Pandeireta a puno con acento na segunda corchea.
+# Voces: kick=bombo · snare=tamboril/caixa · clap=pel da pandeireta, cunchas ou palmas
+# hhc=ferrenas (pandeireta) · hho=xiro/arrastre de ferrenas · lotom/hitom=baixo (ronco, bordon).
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X.X. X.X.X.
+hho    ....-. ....-.
+
+[p1]
+kick   X..... ......
+clap   ..X... ..X.X.
+hhc    X.X.X. X.X.X.
+hho    ....-. ....X.
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x ......
+snare  ...... .....-
+clap   .oX... .oX...
+hhc    X-X-X- X-X-X-
+hho    ....-. ....-.
+lotom  X.X... X.X...
+
+[p3]
+kick   X....x ...XX.
+snare  ...... ..-o-o
+clap   .oX... .oXoX.
+hhc    X-X-X- X-X-X-
+hho    ....-. ....X.
+hitom  ...... ....x.
+lotom  X.X... X.X.X.
+
+[p4]                         # BASE
+kick   X..... ......
+snare  ...... .....-
+clap   ..X... ..X...
+hhc    X.X.X. X.X.X.
+hho    ....-. ....-.
+lotom  X.X... X.X...
+
+[p5]
+kick   X..... ....X.
+snare  ...... ..-o-o
+clap   ..X... ..X.X.
+hhc    X.X.X. X.X.X.
+hho    ....-. ....X.
+hitom  ...... ....x.
+lotom  X.X... X.X.X.
+
+[p6]                         # VARIACION
+kick   X..... ......
+snare  ..X... ..X...
+clap   ...... .....-
+hhc    X.X.X. X.X.X.
+hho    ....-. ....-.
+lotom  X.X... X.X...
+
+[p7]
+kick   X..... ....X.
+snare  ..X... ..X.X.
+clap   ...... ..-o-o
+hhc    X.X.X. X.X.X.
+hho    ....-. ....X.
+hitom  ...... ...xx.
+lotom  X.X... X.X.Xo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.X.X. X.X.X.
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

@@ -1,0 +1,74 @@
+name: MODAL JAZZ 150
+meter: 6/8
+# Jazz & blues. Tempo sugerido: 150 BPM (negras; compas 6/8).
+# Jazz modal ternario (tipo Elvin Jones), 6/8: ride en tresillos e toms rodando.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.xX.x X.xX.x
+hho    ...X.. ...X..
+
+[p1]
+kick   X..... ......
+snare  ...... ....XX
+hhc    X.xX.x X.xX.x
+hho    ...X.. ...X..
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x ....x.
+snare  ....o. ....o.
+hhc    X-XXoX X-XXoX
+hho    ...X.. ...XX.
+hitom  ...... x.....
+lotom  X..... X.....
+
+[p3]
+kick   X....x x..X..
+snare  ..o... o.xoXX
+hhc    X-XXoX X-XXoX
+hho    ...X.. ...XX.
+hitom  ...... x.x.X.
+lotom  X..... X.....
+
+[p4]                         # BASE
+kick   X..... ....x.
+snare  ....o. ....o.
+hhc    X.xX.x X.xX.x
+hho    ...X.. ...X..
+hitom  ...... x.....
+lotom  X..... X.....
+
+[p5]
+kick   X..... x.....
+snare  ..o... o.x.XX
+hhc    X.xX.x X.xX.x
+hho    ...X.. ...X..
+hitom  ...... x.x...
+lotom  X..... X.....
+
+[p6]                         # VARIACION
+kick   X..... ....x.
+snare  ....o. ....o.
+hhc    X.xX.x X.xX.x
+hho    ...X.. ...X..
+hitom  ...... x.....
+lotom  X..... X.....
+
+[p7]
+kick   X..... x.....
+snare  ..o... o.x.XX
+hhc    X.xX.x X.xX.x
+hho    ...X.. ...X..
+hitom  ...... x.xx..
+lotom  X..... X...Xo
+
+[p8]                         # FILL
+kick   X..... ......
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.X.X. ......
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

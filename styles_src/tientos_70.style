@@ -1,0 +1,58 @@
+name: TIENTOS 70
+# Flamenco. Tempo sugerido: 70 BPM.
+# Tientos: tangos lentos e arrastrados; palmas no 2, 3 e 4 con o 3 alongado.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+clap   .... X... X... ..X.
+
+[p1]
+kick   X... .... .... ....
+snare  .... .... X... ....
+clap   .... X... X... ..X.
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X... ...x X... ....
+snare  .... ..xo X... ..x.
+clap   ...o X..o X... .oX.
+lotom  X... .... X... ....
+
+[p3]
+kick   X... ...x X... .X..
+snare  .... ..xo X... x.x.
+clap   ...o X..o X... .oX.
+hitom  .... .... .... ..X.
+lotom  X... .... X... ....
+
+[p4]                         # BASE
+kick   X... .... X... ....
+snare  .... ..x. X... ..x.
+clap   .... X... X... ..X.
+lotom  X... .... X... ....
+
+[p5]
+kick   X... .... X... ....
+snare  .... ..x. X... x.x.
+clap   .... X... X... ..X.
+lotom  X... .... X... ....
+
+[p6]                         # VARIACION
+kick   X... .... X... ....
+snare  .... X... X... ..X.
+clap   .... ..x. X... ..x.
+lotom  X... .... X... ....
+
+[p7]
+kick   X... .... X... ....
+snare  .... X... X... ..X.
+clap   .... ..x. X... x.x.
+hitom  .... .... .... Xx..
+lotom  X... .... X... ..Xo
+
+[p8]                         # FILL
+kick   X... .... .... ....
+hho    .... .... .... ..X.
+hitom  .... .... .... x.X.
+lotom  X... .... .... ....

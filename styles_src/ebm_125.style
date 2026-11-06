@@ -1,0 +1,65 @@
+name: EBM 125
+# Industrial & dark. Tempo sugerido: 125 BPM.
+# EBM: bombo a negras, caixa marcial e baixo de secuenciador en semicorcheas.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    ..X. ..X. ..X. ..X.
+
+[p1]
+kick   X... .... .... ....
+snare  .... X... .... X...
+hhc    ..X. ..X. ..X. ..X.
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X... X..x X... X...
+snare  ...o X... ...o X...
+hhc    o-X- o-X- o-X- o-X-
+hho    .... .... .... ..X.
+lotom  XXXX XXXX XXXX XXXX
+
+[p3]
+kick   X... X..x X... XX..
+snare  ...o X... ...o X...
+hhc    o-X- o-X- o-X- o-X-
+hho    .... .... .... ..X.
+hitom  .... .... .... X.X.
+lotom  XXXX XXXX XXXX XXXX
+
+[p4]                         # BASE
+kick   X... X... X... X...
+snare  .... X... .... X...
+hhc    ..X. ..X. ..X. ..X.
+lotom  XXXX XXXX XXXX XXXX
+
+[p5]
+kick   X... X... X... X...
+snare  .... X... .... X...
+hhc    ..X. ..X. ..X. ..X.
+hitom  .... .... .... X.X.
+lotom  XXXX XXXX XXXX XXXX
+
+[p6]                         # VARIACION
+kick   X... X... X... X...
+snare  .... X... .... X...
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .X.X .X.X
+lotom  XXXX XXXX X.X. X.X.
+
+[p7]
+kick   X... X... X... X...
+snare  .... X... .... X...
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .X.X XXXX
+lotom  XXXX XXXX X.X. X.X.
+
+[p8]                         # FILL
+kick   X... .... .... ....
+snare  .... .... .... ooxX
+clap   .... .... .... ...X
+hhc    X.X. X.X. X.X. ....
+hho    X... .... .... ....
+hitom  .... .... Xx.. ....
+lotom  .... .... ..Xx ....

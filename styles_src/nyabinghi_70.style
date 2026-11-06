@@ -1,0 +1,59 @@
+name: NYABINGHI 70
+# Reggae, dub & rocksteady. Tempo sugerido: 70 BPM.
+# Nyabinghi (rastafari): bombo grave no un, funde no latexo e repeater improvisando.
+# Voces: kick=bass drum · snare=funde · clap=repeater.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+clap   X..X ..X. ..X. X...
+
+[p1]
+kick   X... .... .... ....
+snare  ..X. ..X. ..X. ..X.
+clap   X..X ..X. ..XX .X..
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X... ...x .... ....
+snare  .oX. .oX. .oX. .oX.
+clap   X.oX .oX. .oXo X...
+lotom  X... .... .... ....
+
+[p3]
+kick   X... ...x X... .X..
+snare  .oX. .oX. .oX. .oX.
+clap   X.oX .oX. .oXX oX..
+hitom  .... .... .... ..X.
+lotom  X... .... X... ....
+
+[p4]                         # BASE
+kick   X... .... .... ....
+snare  ..X. ..X. ..X. ..X.
+clap   X..X ..X. ..X. X...
+lotom  X... .... .... ....
+
+[p5]
+kick   X... .... X... ....
+snare  ..X. ..X. ..X. ..X.
+clap   X..X ..X. ..XX .X..
+lotom  X... .... X... ....
+
+[p6]                         # VARIACION
+kick   X... .... .... ....
+snare  X..X ..X. ..X. X...
+clap   ..X. ..X. ..X. ..X.
+lotom  X... .... .... ....
+
+[p7]
+kick   X... .... X... ....
+snare  X..X ..X. ..XX .X..
+clap   ..X. ..X. ..X. ..X.
+hitom  .... .... .... Xx..
+lotom  X... .... X... ..Xo
+
+[p8]                         # FILL
+kick   X... .... .... ....
+hho    .... .... .... ..X.
+hitom  .... .... .... x.X.
+lotom  X... .... .... ....

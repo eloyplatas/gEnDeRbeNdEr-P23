@@ -1,0 +1,71 @@
+name: ADOWA 100
+meter: 6/8
+# African traditional. Tempo sugerido: 100 BPM (negras; compas 6/8).
+# Adowa (Akan, Ghana), 12/8: dawuro (campa) e atumpan.
+# Voces: hhc=dawuro.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X.XX .X.X.X
+
+[p1]
+kick   X..... ......
+snare  ..X..X ..XXX.
+hhc    X.X.XX .X.X.X
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X..X..
+snare  .oX.oX .oX.oX
+hhc    X-X-XX oXoXoX
+hho    ...... ....X.
+hitom  ...X.. ...X..
+lotom  X..... X..X..
+
+[p3]
+kick   X....x X..X..
+snare  .oX.oX .oXXX.
+hhc    X-X-XX oXoXoX
+hho    ...... ....X.
+hitom  ...X.. ...XX.
+lotom  X..... X..X..
+
+[p4]                         # BASE
+kick   X..... X..X..
+snare  ..X..X ..X..X
+hhc    X.X.XX .X.X.X
+hitom  ...X.. ...X..
+lotom  X..... X..X..
+
+[p5]
+kick   X..... X..X..
+snare  ..X..X ..XXX.
+hhc    X.X.XX .X.X.X
+hitom  ...X.. ...X..
+lotom  X..... X..X..
+
+[p6]                         # VARIACION
+kick   X..... X..X..
+snare  ..X..X ..X..X
+hhc    X.X..X .X.X.X
+hho    ....X. ......
+hitom  ...X.. ...X..
+lotom  X..... X..X..
+
+[p7]
+kick   X..... X..X..
+snare  ..X..X ..XXX.
+hhc    X.X..X .X.X.X
+hho    ....X. ......
+hitom  ...X.. ..XX..
+lotom  X..... X..XXo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.X.XX .X.X.X
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

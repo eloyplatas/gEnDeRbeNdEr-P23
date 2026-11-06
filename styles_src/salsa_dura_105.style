@@ -1,0 +1,77 @@
+name: SALSA DURA 105
+# Latin America & Caribbean. Tempo sugerido: 105 BPM.
+# Salsa dura (clave 2-3): campana de bongo, cascara no timbal e conga con tumbao.
+# Voces: clap=clave · hhc=campana · hitom=conga · lotom=baixo anticipado.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X. X.X. X.X. X.X.
+
+[p1]
+kick   X... .... .... ....
+snare  X..X .XX. X..X .XX.
+clap   ..X. X... X..X ..X.
+hhc    X.X. X.X. X.X. X.X.
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   .... ..Xx .... ..X.
+snare  X.oX oXXo X.oX oXX.
+clap   .oXo X..o X.oX .oX.
+hhc    X-X- X-X- X-X- X-X-
+hho    .... .... .... ..X.
+hitom  .... x.XX .... x.XX
+lotom  ...X ...X ..X. ....
+
+[p3]
+kick   .... ..Xx .... .XX.
+snare  X.oX oXXo X.oX oXX.
+clap   .oXo X..o X.oX .oX.
+hhc    X-X- X-X- X-X- X-X-
+hho    .... .... .... ..X.
+hitom  .... x.XX .... x.XX
+lotom  ...X ...X ..X. ....
+
+[p4]                         # BASE
+kick   .... ..X. .... ..X.
+snare  X..X .XX. X..X .XX.
+clap   ..X. X... X..X ..X.
+hhc    X.X. X.X. X.X. X.X.
+hitom  .... x.XX .... x.XX
+lotom  ...X ...X ..X. ....
+
+[p5]
+kick   .... ..X. .... ..X.
+snare  X..X .XX. X..X .XX.
+clap   ..X. X... X..X ..X.
+hhc    X.X. X.X. X.X. X.X.
+hitom  .... x.XX .... x.XX
+lotom  ...X ...X ..X. ....
+
+[p6]                         # VARIACION
+kick   .... ..X. .... ..X.
+snare  ..X. X... X..X ..X.
+clap   X..X .XX. X..X .XX.
+hhc    X... X... X... X...
+hho    ..X. ..X. ..X. ..X.
+hitom  .... x.XX .... x.XX
+lotom  ...X ...X ..X. ....
+
+[p7]
+kick   .... ..X. .... ..X.
+snare  ..X. X... X..X ..X.
+clap   X..X .XX. X..X .XX.
+hhc    X... X... X... X...
+hho    ..X. ..X. ..X. ..X.
+hitom  .... x.XX .... xxXX
+lotom  ...X ...X ..X. ....
+
+[p8]                         # FILL
+kick   X... .... .... ....
+snare  .... .... .... ooxX
+clap   .... .... .... ...X
+hhc    X.X. X.X. X.X. ....
+hho    X... .... .... ....
+hitom  .... .... Xx.. ....
+lotom  .... .... ..Xx ....

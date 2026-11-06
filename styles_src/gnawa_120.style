@@ -1,0 +1,69 @@
+name: GNAWA 120
+meter: 6/8
+# Iberia & Mediterranean. Tempo sugerido: 120 BPM (negras; compas 6/8).
+# Gnawa (Marrocos), 6/8: krakebs en ternario e palmas a catro contra tres.
+# Voces: hhc=krakebs · lotom=guembri.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.xX.x X.xX.x
+
+[p1]
+kick   X..... ......
+clap   X..X.. X..X..
+hhc    X.xX.x X.xX.x
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+clap   X.oX.o X.oX..
+hhc    X-XXoX X-XXoX
+hho    ...... ....X.
+hitom  ...... ....x.
+lotom  X...X. X...X.
+
+[p3]
+kick   X....x X..X..
+clap   X.oX.o X.oX..
+hhc    X-XXoX X-XXoX
+hho    ...... ....X.
+hitom  ...... x.....
+lotom  X...X. X.X.X.
+
+[p4]                         # BASE
+kick   X..... X.....
+clap   X..X.. X..X..
+hhc    X.xX.x X.xX.x
+hitom  ...... ....x.
+lotom  X...X. X...X.
+
+[p5]
+kick   X..... X.....
+clap   X..X.. X..X..
+hhc    X.xX.x X.xX.x
+hitom  ...... x.....
+lotom  X...X. X.X.X.
+
+[p6]                         # VARIACION
+kick   X..... X.....
+clap   X..X.. X..X..
+hhc    X.xX.x X.xX.x
+hitom  ...... ....x.
+lotom  X...X. X...X.
+
+[p7]
+kick   X..... X.....
+clap   X..X.. X..X..
+hhc    X.xX.x X.xX.x
+hitom  ...... x..x..
+lotom  X...X. X.X.Xo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hhc    X.xX.x X.xX.x
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

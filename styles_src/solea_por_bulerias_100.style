@@ -1,0 +1,62 @@
+name: SOLEA POR BULERIAS 100
+meter: 6/8
+# Flamenco. Tempo sugerido: 100 BPM (negras; compas 6/8).
+# Solea por bulerias: compas de buleria a tempo medio, contado desde o 12.
+# Compas de 12 tempos en dous compases de 6/8 (cada tempo = unha corchea; o tempo do nome e a negra).
+# Voces: clap=palmas claras · snare=palmas sordas ou cajon agudo · kick=cajon grave · hhc=nudillos/pitos.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+clap   X.x.x. X.x.x.
+
+[p1]
+kick   X..... ......
+clap   X...X. ..X...
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+snare  -.-.-. -.-.-.
+clap   X.x.xo X.x.x.
+lotom  X..... X.....
+
+[p3]
+kick   X...Xx ..XX..
+snare  -.-.-. -.-.-.
+clap   X.xoX. xoX.x.
+hitom  ...... ....X.
+lotom  X...X. ..X...
+
+[p4]                         # BASE
+kick   X..... X.....
+snare  -.-.-. -.-.-.
+clap   X.x.x. X.x.x.
+lotom  X..... X.....
+
+[p5]
+kick   X...X. ..X...
+snare  -.-.-. -.-.-.
+clap   X.x.X. x.X.x.
+lotom  X...X. ..X...
+
+[p6]                         # VARIACION
+kick   X..... X.....
+snare  X.x.x. X.x.x.
+clap   -.-.-. -.-.-.
+lotom  X..... X.....
+
+[p7]
+kick   X...X. ..X...
+snare  X.x.X. x.X.x.
+clap   -.-.-. -.-.-.
+hitom  ...... ...x..
+lotom  X...X. ..X.Xo
+
+[p8]                         # FILL
+kick   X..... X.....
+snare  ...... ooxxXX
+clap   ...... .....X
+hho    X..... ......
+hitom  XxX... ......
+lotom  ...xXx ......

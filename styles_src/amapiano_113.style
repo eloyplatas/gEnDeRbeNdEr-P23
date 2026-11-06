@@ -1,0 +1,76 @@
+name: AMAPIANO 113
+# Africa. Tempo sugerido: 113 BPM.
+# Amapiano: log drum (os toms = baixo), shaker en semicorcheas e aro sincopado.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    XxXx XxXx XxXx XxXx
+
+[p1]
+kick   X... .... .... ....
+snare  ..X. .... X.X. ....
+clap   .... X... .... X...
+hhc    XxXx XxXx XxXx XxXx
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X... ...x X... ....
+snare  .oX. ...o XoX. ....
+clap   ...o X... ...o X...
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+hitom  .... ..X. .... ..x.
+lotom  X..X ..X. .... X.X.
+
+[p3]
+kick   X... ...x X... .X..
+snare  .oX. ...o XoX. ..x.
+clap   ...o X... ...o X...
+hhc    XXXX XXXX XXXX XXXX
+hho    .... .... .... ..X.
+hitom  .... ..X. .... ..X.
+lotom  X..X ..X. ..X. .X..
+
+[p4]                         # BASE
+kick   X... .... X... ....
+snare  ..X. .... X.X. ....
+clap   .... X... .... X...
+hhc    XxXx XxXx XxXx XxXx
+hitom  .... ..X. .... ..x.
+lotom  X..X ..X. .... X.X.
+
+[p5]
+kick   X... .... X... ....
+snare  ..X. .... X.X. ..x.
+clap   .... X... .... X...
+hhc    XxXx XxXx XxXx XxXx
+hitom  .... ..X. .... ..X.
+lotom  X..X ..X. ..X. .X..
+
+[p6]                         # VARIACION
+kick   X... .... X... ....
+snare  .... X... .... X...
+clap   ..X. .... X.X. ....
+hhc    Xx.x Xx.x Xx.x Xx.x
+hho    ..X. ..X. ..X. ..X.
+hitom  .... ..X. .... ..x.
+lotom  X..X ..X. .... X.X.
+
+[p7]
+kick   X... .... X... ....
+snare  .... X... .... X...
+clap   ..X. .... X.X. ..x.
+hhc    Xx.x Xx.x Xx.x Xx.x
+hho    ..X. ..X. ..X. ..X.
+hitom  .... ..X. .... XXX.
+lotom  X..X ..X. ..X. ...o
+
+[p8]                         # FILL
+kick   X... .... .... ....
+snare  .... .... .... ooxX
+clap   .... .... .... ...X
+hhc    X.X. X.X. X.X. ....
+hho    X... .... .... ....
+hitom  .... .... Xx.. ....
+lotom  .... .... ..Xx ....

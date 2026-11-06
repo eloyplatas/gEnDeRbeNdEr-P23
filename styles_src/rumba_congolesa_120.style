@@ -1,0 +1,73 @@
+name: RUMBA CONGOLESA 120
+# Africa. Tempo sugerido: 120 BPM.
+# Rumba congolesa: guitarras en arpexo, caixa de rumba e baixo de tumbao.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X. X.X. X.X. X.X.
+
+[p1]
+kick   X... .... .... ....
+snare  ...X ..X. ...X ..X.
+clap   X..X ..X. ..X. X...
+hhc    X.X. X.X. X.X. X.X.
+lotom  X... .... .... ....
+
+[p2]                         # ENERGIA
+kick   X... ...x X... ....
+snare  ..oX .oX. ..oX .oX.
+clap   X.oX .oX. .oXo X...
+hhc    X-X- X-X- X-X- X-X-
+hho    .... .... .... ..X.
+lotom  X..X ..X. X..X ..X.
+
+[p3]
+kick   X... ...x X... .X..
+snare  ..oX .oX. ..oX .oX.
+clap   X.oX .oX. .oXo X...
+hhc    X-X- X-X- X-X- X-X-
+hho    .... .... .... ..X.
+hitom  .... .... .... ..X.
+lotom  X..X ..X. X... ...X
+
+[p4]                         # BASE
+kick   X... .... X... ....
+snare  ...X ..X. ...X ..X.
+clap   X..X ..X. ..X. X...
+hhc    X.X. X.X. X.X. X.X.
+lotom  X..X ..X. X..X ..X.
+
+[p5]
+kick   X... .... X... ....
+snare  ...X ..X. ...X ..X.
+clap   X..X ..X. ..X. X...
+hhc    X.X. X.X. X.X. X.X.
+lotom  X..X ..X. X... ...X
+
+[p6]                         # VARIACION
+kick   X... .... X... ....
+snare  X..X ..X. ..X. X...
+clap   ...X ..X. ...X ..X.
+hhc    X... X... X... X...
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... ...X ....
+lotom  X..X ..X. X... ..X.
+
+[p7]
+kick   X... .... X... ....
+snare  X..X ..X. ..X. X...
+clap   ...X ..X. ...X ..X.
+hhc    X... X... X... X...
+hho    ..X. ..X. ..X. ..X.
+hitom  .... .... .... Xx.X
+lotom  X..X ..X. X... ..X.
+
+[p8]                         # FILL
+kick   X... .... .... ....
+snare  .... .... .... ooxX
+clap   .... .... .... ...X
+hhc    X.X. X.X. X.X. ....
+hho    X... .... .... ....
+hitom  .... .... Xx.. ....
+lotom  .... .... ..Xx ....

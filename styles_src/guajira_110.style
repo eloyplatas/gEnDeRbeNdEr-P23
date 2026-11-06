@@ -1,0 +1,66 @@
+name: GUAJIRA 110
+meter: 6/8
+# Flamenco. Tempo sugerido: 110 BPM (negras; compas 6/8).
+# Guajira (cante de ida e volta): alternancia 6/8 e 3/4, acentos no 12, 3, 6, 8 e 10.
+# Compas de 12 tempos en dous compases de 6/8 (cada tempo = unha corchea; o tempo do nome e a negra).
+# Voces: clap=palmas claras · snare=palmas sordas ou cajon agudo · kick=cajon grave · hhc=nudillos/pitos.
+# Pad: centro=BASE p4/5 · ENERGIA p2/3 · VARIACION p6/7 · INTRO p0/1 · FILL p8
+# Escala: X=255 x=170 o=120 -=60 .=0 (con DENS por defecto solo suena X)
+
+[p0]                         # INTRO
+hhc    X.X.X. X.X.X.
+
+[p1]
+kick   X..... ......
+clap   X...X. ..X...
+hhc    X.X.X. X.X.X.
+lotom  X..... ......
+
+[p2]                         # ENERGIA
+kick   X....x X.....
+clap   X.x.xo X.x.x.
+hhc    X-X-X- X-X-X-
+hho    ...... ....X.
+lotom  X..... X.....
+
+[p3]
+kick   X...Xx ..XX..
+clap   X.xoX. xoX.x.
+hhc    X-X-X- X-X-X-
+hho    ...... ....X.
+hitom  ...... ....X.
+lotom  X...X. ..X...
+
+[p4]                         # BASE
+kick   X..... X.....
+clap   X.x.x. X.x.x.
+hhc    X.X.X. X.X.X.
+lotom  X..... X.....
+
+[p5]
+kick   X...X. ..X...
+clap   X.x.X. x.X.x.
+hhc    X.X.X. X.X.X.
+lotom  X...X. ..X...
+
+[p6]                         # VARIACION
+kick   X..... X.....
+clap   X.x.x. X.x.x.
+hhc    X.X... X.X...
+hho    ....X. ....X.
+lotom  X..... X.....
+
+[p7]
+kick   X...X. ..X...
+clap   X.x.X. x.X.x.
+hhc    X.X... X.X...
+hho    ....X. ....X.
+hitom  ...... ...x..
+lotom  X...X. ..X.Xo
+
+[p8]                         # FILL
+kick   X..... ......
+hhc    X.X.X. X.X.X.
+hho    ...... ....X.
+hitom  ...... ..x.X.
+lotom  X..... ......
